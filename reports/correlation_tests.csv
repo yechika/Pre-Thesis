@@ -1,0 +1,11 @@
+test,test_statistic,p_value,df,effect_size,n,interpretation,feature,label,p_adj_bh,significant_after_bh
+chi-square,341.5838602266017,6.698957124704762e-75,2.0,0.015876144819296674,1355212,significant,match_outcome_for_player,sentiment_label,9.569938749578232e-75,True
+mann-whitney,215116358257.0,0.0,,0.05973530422526896,1355212,significant,match_outcome_for_player,max_toxicity_prob,0.0,True
+spearman,-0.05494864217602937,0.0,,-0.05494864217602937,1380867,significant,duration,sentiment_score,0.0,True
+spearman,-0.08048505579005047,0.0,,-0.08048505579005047,1380867,significant,duration,max_toxicity_prob,0.0,True
+kruskal-wallis,887.4145812244124,4.7518641588436584e-192,3.0,0.0006404795995145155,1380867,significant,tier,max_toxicity_prob,7.919773598072765e-192,True
+chi-square,65.2680998844565,3.802981905735289e-12,6.0,0.004861379904789106,1380867,significant,tier,sentiment_label,4.753727382169112e-12,True
+kruskal-wallis,40.43781941076713,1.6559189831750964e-09,2.0,2.7836064529719895e-05,1380867,significant,phase,max_toxicity_prob,1.8399099813056626e-09,True
+chi-square,28.506299470193557,9.846803104656735e-06,4.0,0.003212768982840768,1380867,significant,phase,sentiment_label,9.846803104656735e-06,True
+kruskal-wallis,14672.632003738821,0.0,2.0,0.010624241057583384,1380867,significant,period,max_toxicity_prob,0.0,True
+chi-square,4295.42699024418,0.0,4.0,0.039437760706499465,1380867,significant,period,sentiment_label,0.0,True

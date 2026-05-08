@@ -1,0 +1,152 @@
+experiment_name: thesis-sentiment-toxicity-dota2-decade
+created_at: 2026-04-28
+git_commit: <TBD>
+seed: 42
+runtime:
+  python_version: <TBD>
+  transformers_version: <TBD>
+  torch_version: <TBD>
+  datasets_version: <TBD>
+  scikit_learn_version: <TBD>
+  pandas_version: <TBD>
+data:
+  raw_root: dota2_dataset_bersih
+  processed_root: data/processed
+  gold_root: data/gold
+  inference_root: data/inference
+  data_processed_hash: f692bb679a878a669de98a752376abf14137aff2ec2412bb0b7933591c9b3f3b
+  gold_split_hash:
+    train: 643fb3b1133bd6b468ad41993088a63ebe95b306cfd2436cc15326e0afa5a3b4
+    test: e010cd39e9d39d7fbe530daed1842dfc8f929c216c95932337366d0bf0b08701
+    sample: 120fa94fcb2b5ec97d662e21dfb2faa8f686d5922bbe557b48b8b3e211683031
+folders:
+- '2016'
+- '2017'
+- '2018'
+- '2019'
+- '2020'
+- '2021'
+- '2022'
+- '2023'
+- '2024'
+- '2025'
+- '202601'
+- '202602'
+- '202603'
+- '202604'
+language_filter:
+  detector: langdetect
+  target_lang: en
+  short_circuit_max_tokens: 5
+gold_sampling:
+  target_size: 8000
+  min_per_stratum: 50
+  strata:
+  - year
+  - match_outcome_for_player
+  - tier
+annotation:
+  pilot_size: 200
+  kappa_threshold_sentiment: 0.6
+  alpha_threshold_toxicity: 0.55
+  mode: <TBD>
+labels:
+  sentiment_classes:
+  - negative
+  - neutral
+  - positive
+  toxicity_labels:
+  - toxic
+  - severe_toxic
+  - obscene
+  - threat
+  - insult
+  - identity_hate
+model_checkpoints:
+  bert:
+    hf_repo: bert-base-uncased
+    revision_sha: 86b5e0934494bd15c9632b12f734a8a67f723594
+  roberta:
+    hf_repo: roberta-base
+    revision_sha: e2da8e2f811d1448a5b465c236feacd80ffbac7b
+  distilbert:
+    hf_repo: distilbert-base-uncased
+    revision_sha: 12040accade4e8a0f71eabdb258fecc2e7e948be
+  detoxify:
+    hf_repo: unitary/toxic-bert
+    revision_sha: 4d6c22e74ba2fdd26bc4f7238f50766b045a0d94
+public_datasets:
+  sentiment:
+    name: tweeteval-sentiment
+    source_url: https://huggingface.co/datasets/cardiffnlp/tweet_eval
+    sha256: <TBD>
+    local_path: data/external/tweeteval_sentiment
+  toxicity_jigsaw:
+    name: jigsaw_toxic_comment
+    source_url: https://www.kaggle.com/competitions/jigsaw-toxic-comment-classification-challenge/data
+    sha256: <TBD>
+    local_path: data/external/jigsaw_toxic
+  toxicity_hateeval:
+    name: hateeval2019
+    source_url: https://github.com/msang/hateval
+    sha256: <TBD>
+    local_path: data/external/hateeval
+hyperparameters:
+  sentiment:
+    learning_rate: 2.0e-05
+    batch_size: 32
+    num_epochs: 3
+    weight_decay: 0.01
+    warmup_ratio: 0.1
+    max_seq_length: 128
+    gradient_accumulation_steps: 1
+    precision: fp16
+    optimizer: adamw_torch
+  toxicity:
+    learning_rate: 2.0e-05
+    batch_size: 32
+    num_epochs: 3
+    weight_decay: 0.01
+    warmup_ratio: 0.1
+    max_seq_length: 192
+    gradient_accumulation_steps: 1
+    precision: fp16
+    optimizer: adamw_torch
+    loss: bce_with_logits
+inference:
+  batch_size: 128
+  precision: fp16
+  device_preference:
+  - cuda
+  - cpu
+evaluation:
+  bootstrap_resamples: 1000
+  ci_level: 0.95
+  test_split_ratio: 0.3
+temporal:
+  monthly_resample: M
+  yearly_resample: Y
+  events:
+    pandemic_band:
+    - '2020-03-01'
+    - '2021-12-31'
+    dpc_era:
+    - '2017-01-01'
+    - '2022-12-31'
+    post_dpc_era:
+    - '2023-01-01'
+    - '2026-12-31'
+    patches:
+    - name: '7.00'
+      date: '2016-12-12'
+    - name: '7.20'
+      date: '2018-11-19'
+    - name: '7.30'
+      date: '2021-04-09'
+    - name: '7.33'
+      date: '2023-04-20'
+    - name: '7.34'
+      date: '2023-08-08'
+multiple_testing:
+  method: benjamini_hochberg
+  q: 0.05

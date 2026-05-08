@@ -1,3 +1,27 @@
 /aisdlc
 /dota2_dataset_bersih
 .env
+npm
+.agent
+.claude/
+/pdf_referensi
+.venv
+
+# Eksperimen skripsi — output yang tidak di-track
+data/processed/*.parquet
+data/processed/*.meta.json
+data/processed/*_non_english.parquet
+data/gold/sample.csv
+data/gold/raw_annotations/
+data/gold/_*.csv
+data/inference/
+data/external/
+models/
+reports/training_*.log
+reports/error_samples_*.csv
+reports/plots/*.svg
+
+# Notebook checkpoint + Python cache
+**/.ipynb_checkpoints/
+**/__pycache__/
+*.pyc

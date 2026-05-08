@@ -1,0 +1,3 @@
+test,test_statistic,p_value,effect_size,n,interpretation,feature,label,level,df
+spearman,-0.14745806505729048,0.0,-0.14745806505729048,197695,significant,duration,mean_toxicity,per_match,
+kruskal-wallis,1.764172477644997,0.6227622641086803,-6.251308973878443e-06,197695,ns,tier,mean_toxicity,per_match,3.0

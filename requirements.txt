@@ -1,0 +1,37 @@
+# Core ML / NLP
+transformers==4.46.3
+torch==2.5.1
+datasets==3.1.0
+tokenizers==0.20.3
+accelerate==1.1.1
+detoxify==0.5.2
+
+# Data processing
+pandas==2.2.3
+pyarrow==18.0.0
+numpy==2.0.2
+
+# Statistics & evaluation
+scikit-learn==1.5.2
+scipy==1.14.1
+statsmodels==0.14.4
+
+# Plotting
+matplotlib==3.9.2
+seaborn==0.13.2
+
+# Language detection
+langdetect==1.0.9
+fasttext-langdetect==1.0.5
+
+# Utilities
+pyyaml==6.0.2
+tqdm==4.67.1
+python-dotenv==1.0.1
+
+# Kaggle (untuk re-download dataset; sudah ada di import.py)
+kagglehub==0.3.4
+
+# Notebook (asumsikan tersedia via VS Code/Jupyter; pin untuk reproducibility)
+jupyter==1.1.1
+ipykernel==6.29.5

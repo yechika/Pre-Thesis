@@ -1,0 +1,17 @@
+series,test_name,test_statistic,z_score,p_value,interpretation,n,breakpoint_label,breakpoint_index,f_statistic
+mean_sentiment_score,Mann-Kendall,-0.5788093364804616,-9.531176700751367,0.0,decreasing,124,,,
+pct_negative,Mann-Kendall,-0.22161028061893523,-3.647894277717892,0.00026439838493064194,decreasing,124,,,
+pct_toxic_any,Mann-Kendall,-0.4946236559139785,-8.144588112062861,4.440892098500626e-16,decreasing,124,,,
+mean_toxicity_score,Mann-Kendall,0.3241542092840283,5.33685420973411,9.457302163617953e-08,increasing,124,,,
+mean_sentiment_score,Chow,,,0.023308489949529276,structural_break,124,pandemic_start_2020-03,50.0,3.879182279249138
+mean_sentiment_score,Chow,,,0.707450451311355,no_break,124,post_dpc_2023-01,84.0,0.3470877463511974
+mean_sentiment_score,Chow,,,0.7158421924097927,no_break,124,patch_7.33_2023-04,87.0,0.3352285491795715
+pct_negative,Chow,,,0.01852130710726807,structural_break,124,pandemic_start_2020-03,50.0,4.1244111192934145
+pct_negative,Chow,,,0.006218596155542433,structural_break,124,post_dpc_2023-01,84.0,5.301483037036268
+pct_negative,Chow,,,0.013027201174889202,structural_break,124,patch_7.33_2023-04,87.0,4.501586735309435
+pct_toxic_any,Chow,,,1.872430046345741e-06,structural_break,124,pandemic_start_2020-03,50.0,14.749993120238026
+pct_toxic_any,Chow,,,0.5407424942281602,no_break,124,post_dpc_2023-01,84.0,0.6179728304644434
+pct_toxic_any,Chow,,,0.7903675598706015,no_break,124,patch_7.33_2023-04,87.0,0.23571899561563345
+mean_toxicity_score,Chow,,,5.9199389579323025e-06,structural_break,124,pandemic_start_2020-03,50.0,13.329596719424046
+mean_toxicity_score,Chow,,,0.6567565473565835,no_break,124,post_dpc_2023-01,84.0,0.4219184228063945
+mean_toxicity_score,Chow,,,0.5539411516000086,no_break,124,patch_7.33_2023-04,87.0,0.5936140774404032
