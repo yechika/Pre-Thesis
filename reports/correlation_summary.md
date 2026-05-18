@@ -1,6 +1,6 @@
-# Ringkasan Korelasi Fitur Kontekstual
+# Contextual Feature Correlation Summary
 
-## Tabel Hasil Uji
+## Test Results Table
 
 | feature                  | label             | test           |    test_statistic |   p_value |   p_adj_bh | significant_after_bh   |   effect_size |       n |
 |:-------------------------|:------------------|:---------------|------------------:|----------:|-----------:|:-----------------------|--------------:|--------:|
@@ -15,7 +15,7 @@
 | period                   | max_toxicity_prob | kruskal-wallis |        14672.6320 |    0.0000 |     0.0000 | True                   |        0.0106 | 1380867 |
 | period                   | sentiment_label   | chi-square     |         4295.4270 |    0.0000 |     0.0000 | True                   |        0.0394 | 1380867 |
 
-## Finding Signifikan setelah BH-FDR (urut effect size desc)
+## Significant Findings after BH-FDR (sorted by effect size, desc)
 
 - `duration` × `max_toxicity_prob` (spearman): stat=-0.080, p_adj=0.0000, effect=-0.080, n=1380867
 - `match_outcome_for_player` × `max_toxicity_prob` (mann-whitney): stat=215116358257.000, p_adj=0.0000, effect=0.060, n=1355212
@@ -28,8 +28,8 @@
 - `tier` × `max_toxicity_prob` (kruskal-wallis): stat=887.415, p_adj=0.0000, effect=0.001, n=1380867
 - `phase` × `max_toxicity_prob` (kruskal-wallis): stat=40.438, p_adj=0.0000, effect=0.000, n=1380867
 
-## Catatan Limitasi
+## Limitations
 
-- Pesan dalam satu pertandingan TIDAK independen (clustering effect). Analisis robustness pada level per-pertandingan dilaporkan di `correlation_robustness_per_match.csv`.
-- Kolom `phase` mayoritas bernilai `lainnya` karena dataset Dota 2 publik tidak menyertakan fase per-match secara eksplisit (lihat `reports/contextual_features.md` §4).
-- Effect size yang sangat kecil (mis. Cramér's V < 0.1, |rho| < 0.1) menunjukkan signifikansi statistik tanpa relevansi praktis pada n besar.
+- Messages within the same match are NOT independent (clustering effect). Robustness analysis at per-match level is reported in `correlation_robustness_per_match.csv`.
+- The `phase` column is predominantly `lainnya` because the public Dota 2 dataset does not include explicit per-match phase labels (see `reports/contextual_features.md` §4).
+- Very small effect sizes (e.g., Cramér's V < 0.1, |rho| < 0.1) indicate statistical significance without practical relevance at large n.

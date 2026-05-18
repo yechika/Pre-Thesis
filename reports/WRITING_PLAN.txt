@@ -1,0 +1,472 @@
+================================================================================
+PANDUAN PENULISAN LAPORAN SKRIPSI
+Topik: Analisis Sentimen Komparatif & Deteksi Toksisitas Chat Dota 2 (2016-2026)
+Tim:  Daniel Dirgantara | Muhammad Dhitan Imam Sakti | Aldiaz Kusuma Ramadhan
+Generated: 2026-05-05
+================================================================================
+
+
+URUTAN PENULISAN (RECOMMENDED)
+--------------------------------------------------------------------------------
+BAB IV → BAB III → BAB I → BAB II → BAB V
+
+Alasan: BAB IV output sudah jadi (reports/CHAPTER4_SUMMARY.md). Mundur dari hasil
+ke metodologi lebih efisien dibanding linear.
+
+
+
+================================================================================
+BAB I — PENDAHULUAN  (1 hari)
+================================================================================
+
+SOURCE: proposal awal di session start.
+
+ACTION:
+1. Copy section 1.1 Latar Belakang, 1.2 Rumusan Masalah, 1.3 Tujuan,
+   1.4 Manfaat, 1.5 Ruang Lingkup dari proposal.
+2. Update angka aktual:
+     - Total chat: 1.603.567 baris (sebelumnya <TBD>)
+     - Pertandingan profesional: 197.695 unique
+     - Folder data: 14 (2016-2025 + 4 kuartal 2026)
+     - Non-EN dieksklusi: 274.087 baris (~14.6%)
+3. Tambah disclosure di 1.5 Batasan: mode anotasi single-annotator AI (Pilihan B).
+
+
+
+================================================================================
+BAB II — TINJAUAN PUSTAKA  (1-2 minggu) — paling lama
+================================================================================
+
+SECTION:
+
+2.1 Dota 2 dan Esports
+    - MOBA, Valve, sistem chat (all-chat, team-chat)
+    - Sistem moderasi: communication ban, Overwatch system
+    - Reference: blog Valve, paper esports
+
+2.2 Analisis Sentimen
+    - Definisi (Liu 2012, Pang & Lee 2008)
+    - Kategori: leksikon (VADER), ML klasik (SVM, NB), deep learning (LSTM, Transformer)
+    - Trade-off masing-masing pendekatan
+
+2.3 Deteksi Toksisitas Online
+    - Definisi (Davidson 2017)
+    - Multi-label vs binary
+    - Detoxify (Hanu 2020) - unitary/toxic-bert
+    - Jigsaw Toxic Comment Classification Challenge (Kaggle 2018)
+
+2.4 Transformer Models
+    - Vaswani et al. 2017 "Attention is All You Need"
+    - Devlin et al. 2019 "BERT: Pre-training of Deep Bidirectional Transformers"
+    - Liu et al. 2019 "RoBERTa: A Robustly Optimized BERT Pretraining"
+    - Sanh et al. 2019 "DistilBERT, a distilled version of BERT"
+    - Transfer learning + fine-tuning workflow
+
+2.5 Penelitian Terkait
+    Search keyword di Google Scholar / arXiv / ACL Anthology:
+        - "in-game chat toxicity"
+        - "MOBA chat sentiment"
+        - "esports communication analysis"
+        - "Dota 2 chat" / "League of Legends chat"
+        - "deep learning toxicity classification"
+    Target: 30-50 referensi total.
+
+TOOLS: Mendeley / Zotero (free) untuk manage citation + auto-format APA/IEEE.
+
+
+
+================================================================================
+BAB III — METODOLOGI  (1 minggu)
+================================================================================
+
+SOURCE FILES:
+    - openspec/specs/*/spec.md (7 capability)
+    - openspec/changes/archive/2026-05-05-thesis-sentiment-toxicity-dota2-decade/design.md
+    - data/gold/ANNOTATION_GUIDELINE.md
+    - data/gold/TOOLING_DECISION.md
+    - reports/contextual_features.md
+    - configs/experiment.yaml
+
+SECTION:
+
+3.1 Desain Penelitian
+    - Kuantitatif komparatif retrospektif satu dekade (2016-2026)
+    - 4 model deep learning, gold-test held-out 30%
+    - 3 hipotesis (RQ1: model comparison, RQ2: temporal trend, RQ3: contextual correlation)
+
+3.2 Sumber Data
+    - Kaggle bwandowando/dota-2-pro-league-matches-2023
+    - 14 folder: 2016-2025 + 4 kuartal 2026
+    - Total 1.6M chat di 197k pertandingan profesional pasca-filter
+
+3.3 Pipeline Pengolahan Data
+    Source: openspec/specs/chat-data-pipeline/spec.md
+    - Ingest chat.csv + main_metadata.csv per-folder
+    - Drop chatwheel (perintah suara/visual non-tekstual)
+    - Filter bahasa Inggris (langdetect + short-circuit ≤5 token alfanumerik)
+    - Join metadata + kolom turunan (match_outcome_for_player, year, month, quarter)
+    - Enrichment dari Constants/ (tier, leaguename, patch_name, phase)
+    - Output parquet snappy, schema 29 kolom stabil
+
+3.4 Skema Anotasi (DUAL-AXIS)
+    Source: data/gold/ANNOTATION_GUIDELINE.md (tracked di repo)
+    - Sentiment: 3-class single-label (negative, neutral, positive)
+    - Toxicity: 6-label multi-label (toxic, severe_toxic, obscene, threat, insult, identity_hate)
+    - Skema toxicity mengikuti Detoxify/Jigsaw supaya comparable
+    - Plus markers: is_dota_jargon, is_ambiguous, notes
+    - Aturan disambiguasi: sarcasm, jargon Dota, ambigu, pesan singkat
+
+3.5 Mode Anotasi (CRITICAL DISCLOSURE) ★★★ WAJIB DISEBUT ★★★
+    - Pilihan B: Single-Annotator AI (Claude opus-4-7)
+    - Anotasi 8.000 sample dengan kombinasi rule-based matching + LLM reasoning
+    - Pasca-dedup: 7.971 baris unique
+    - LIMITASI METODOLOGI:
+        * Cohen's kappa pair-wise TIDAK dihitung (butuh ≥2 rater)
+        * Krippendorff's alpha multi-label TIDAK dihitung
+        * Reliability bergantung konsistensi 1 anotator AI
+        * Bias risk: model evaluasi (BERT/RoBERTa/DistilBERT) bisa share bias
+          representasi dengan Claude → F1 over-optimistic
+    - MITIGASI:
+        * 38% sample (3.064 baris) flag is_ambiguous=1 untuk audit
+        * Subgroup analysis di notebook 06 dengan/tanpa ambiguous
+    - REKOMENDASI MASA DEPAN:
+        * Migrasi ke Pilihan A: 3 anotator manusia + AI = 4-rater study
+        * Threshold publikasi: kappa pair-wise AI-vs-human ≥ 0.6 sentimen
+    - REFERENCE FILE: data/gold/agreement_report.md, data/gold/TOOLING_DECISION.md
+
+3.6 Stratified Sampling Gold-Standard
+    Source: openspec/specs/gold-standard-annotation/spec.md
+    - Strata: year × match_outcome_for_player × tier
+    - Target 8.000, minimal 50 per stratum
+    - Total 62 stratum unique, semua ≥ 50 baris (memenuhi spec)
+    - Seed 42 deterministik
+    - Train/test split: 5.579 (70%) / 2.392 (30%) stratified by sentiment
+
+3.7 Model Deep Learning (4 model)
+    1. BERT-base-uncased (revision SHA: 86b5e0934494bd15c9632b12f734a8a67f723594)
+    2. RoBERTa-base (revision SHA: e2da8e2f811d1448a5b465c236feacd80ffbac7b)
+    3. DistilBERT-base-uncased (revision SHA: 12040accade4e8a0f71eabdb258fecc2e7e948be)
+    4. Detoxify - unitary/toxic-bert (revision SHA: 4d6c22e74ba2fdd26bc4f7238f50766b045a0d94)
+    - Detoxify dipakai PRETRAINED zero-shot (tidak fine-tune)
+    - 3 model lain di-fine-tune via transfer learning
+
+3.8 Transfer Learning Strategy
+    Source: openspec/specs/sentiment-toxicity-modeling/spec.md
+    - Sentiment: TweetEval-sentiment (3-class native: 0=neg, 1=neu, 2=pos)
+    - Toxicity: Jigsaw Toxic Comment Classification (multi-label 6 native)
+    - Hyperparameter:
+        * learning_rate=2e-5, batch_size=32, num_epochs=3
+        * weight_decay=0.01, warmup_ratio=0.1
+        * fp16 mixed-precision (CUDA)
+        * EarlyStoppingCallback patience=2
+    - Toxicity loss: BCEWithLogitsLoss (multi-label)
+    - Dataset SHA256 di configs/experiment.yaml
+
+3.9 Metrik Evaluasi
+    Sentiment 3-class:
+        - Accuracy
+        - F1-macro (primary)
+        - F1-per-class (negative, neutral, positive)
+        - Precision-macro, Recall-macro
+        - Confusion matrix (3×3)
+        - ROC-AUC One-vs-Rest
+    Toxicity multi-label:
+        - F1-micro (primary), F1-macro
+        - F1-per-label (6 label)
+        - Hamming Loss
+        - Subset Accuracy (exact match)
+        - Average Precision per-label
+    Bootstrap CI 95% dengan 1000 resamples untuk semua metrik utama.
+
+3.10 Uji Statistik Temporal
+    Source: openspec/specs/temporal-trend-analysis/spec.md
+    - Mann-Kendall trend test: deteksi monotonic trend di series 124 bulan
+    - Chow structural break test: 3 breakpoint kandidat
+        * Pandemi start: 2020-03
+        * Post-DPC: 2023-01
+        * Patch 7.33: 2023-04
+    - Mann-Whitney U + chi-square: era comparison
+
+3.11 Uji Statistik Korelasi
+    Source: openspec/specs/contextual-correlation-analysis/spec.md
+    - Fitur kontekstual: outcome (binary), duration (continuous), tier (ordinal),
+      phase (categorical), period (categorical 3-bin)
+    - Test mapping per tipe variabel:
+        * Binary × categorical → chi-square + Cramér's V
+        * Binary × continuous → Mann-Whitney U + rank-biserial r
+        * Continuous × continuous → Spearman rho
+        * 3+ groups × continuous → Kruskal-Wallis + Dunn's post-hoc
+    - Multiple-testing: Benjamini-Hochberg FDR, q=0.05
+    - Robustness analysis: re-run di level per-match (n=197.695) untuk
+      kontrol clustering effect
+
+3.12 Tools dan Environment
+    - Python 3.10
+    - transformers v5.5.0 (Hugging Face)
+    - PyTorch 2.8.0+cu128 (CUDA 12.8)
+    - datasets 4.8.5, scikit-learn 1.7.1
+    - pandas 2.3.3, numpy 1.26.4, pyarrow
+    - scipy 1.x, statsmodels (uji statistik)
+    - matplotlib + seaborn (visualisasi)
+    - Hardware: NVIDIA GPU CUDA-capable
+    - Seed 42 di seluruh komponen stochastic
+
+3.13 Reproducibility
+    Source: openspec/specs/experiment-reproducibility/spec.md
+    - Manifest terpusat: configs/experiment.yaml
+    - Hash SHA256: dataset Kaggle, processed parquet, gold split
+    - Revision SHA: pin Hugging Face model checkpoint
+    - Notebook bernomor 01-08, deterministik
+    - Run log per-notebook: reports/run_log.csv
+
+
+
+================================================================================
+BAB IV — HASIL & PEMBAHASAN  (1-2 hari)
+================================================================================
+
+SOURCE: reports/CHAPTER4_SUMMARY.md (~17 KB sudah jadi)
+
+ACTION:
+1. Convert markdown → Word:
+       pandoc reports/CHAPTER4_SUMMARY.md -o chapter4.docx
+2. Embed plot dari reports/plots/*.png (12 plot total):
+       - temporal_sentiment_monthly.png
+       - temporal_negative_pct_monthly.png
+       - temporal_toxicity_monthly.png
+       - temporal_toxicity_score_monthly.png
+       - temporal_yearly_overview.png
+       - confusion_bert_sentiment.png
+       - confusion_roberta_sentiment.png
+       - confusion_distilbert_sentiment.png
+       - correlation_outcome_sentiment.png
+       - correlation_outcome_toxicity.png
+       - correlation_duration_toxicity.png
+       - correlation_tier_toxicity.png
+       - correlation_phase_toxicity.png
+3. Format tabel Word: copy markdown table, paste, Word auto-convert.
+4. Re-baca, sesuaikan flow narasi BINUS (intro section + transition kalimat).
+
+CHECKPOINTS BAB IV (sudah ada di CHAPTER4_SUMMARY.md):
+    4.1 Karakteristik Dataset
+        4.1.1 Volume + distribusi temporal
+        4.1.2 Karakteristik gold-standard
+    4.2 Hasil Perbandingan 4 Model
+        4.2.1 Model dibandingkan
+        4.2.2 Hasil sentimen 3-class (gold-test)
+        4.2.3 Hasil toksisitas multi-label
+        4.2.4 Analisis error per-jargon
+        4.2.5 Diskusi trade-off
+    4.3 Tren Temporal 2016-2026
+        4.3.1 Time-series bulanan
+        4.3.2 Mann-Kendall
+        4.3.3 Chow structural break
+        4.3.4 Event comparison
+        4.3.5 Pembahasan kualitatif
+    4.4 Korelasi Faktor Kontekstual
+        4.4.1 10 uji + BH-FDR
+        4.4.2 Robustness per-match
+        4.4.3 Pembahasan
+    4.5 Pembahasan + Limitasi + Saran
+
+
+
+================================================================================
+BAB V — KESIMPULAN & SARAN  (1-2 hari)
+================================================================================
+
+5.1 Kesimpulan (jawab 3 RQ)
+
+RQ1 (perbandingan model):
+    - Sentimen fine-tuned: RoBERTa terbaik F1-macro 0.222 [0.197, 0.253], tapi
+      semua 3 model CI tumpang tindih (tidak signifikan beda statistik).
+    - Detoxify zero-shot accuracy 0.42 lebih tinggi dari fine-tuned 0.39.
+    - Toksisitas: Detoxify pretrained terbaik F1-micro 0.152, F1-macro 0.081.
+    - Implikasi: Specialist pretrained > generalist fine-tuned untuk domain
+      Dota chat. Domain shift dari TweetEval/Jigsaw substansial.
+
+RQ2 (tren temporal):
+    - Sentimen menurun (Mann-Kendall tau=-0.58, p<1e-16).
+    - Pandemi 2020-03 = breakpoint struktural terkuat (Chow break di 4/4 metric).
+    - Toxicity intensification: frekuensi turun (-0.50) tapi severity naik (+0.32).
+    - Post-DPC era: sportsmanship drop signifikan.
+    - Implikasi: Komunitas dewasa secara umum, tapi extreme tail makin parah.
+      Pandemi disrupt komunikasi profesional.
+
+RQ3 (faktor kontekstual):
+    - Semua 5 faktor signifikan setelah BH-FDR (10 uji statistik).
+    - Terkuat: duration × max_toxicity ρ=-0.080 (robust per-match ρ=-0.147).
+    - Kalah → toxic (Mann-Whitney r=0.060, hipotesis H1 valid).
+    - Tier × toxicity NS di per-match level (clustering artifact, hapus klaim utama).
+    - Implikasi: Match singkat (early-stomp) + tim kalah = high-risk untuk
+      moderasi otomatis. Sistem moderasi prioritaskan target ini.
+
+
+5.2 Saran (Source: CHAPTER4_SUMMARY.md §4.5.3)
+
+    - Multilingual analysis: 274.087 baris non-Inggris (Russia/CN/SEA)
+      dieksklusi. Replikasi dengan XLM-RoBERTa multilingual → cakupan +14% data.
+    - Multi-modal: voice chat (transcribe) + emote + chat teks. Voice signal
+      kemungkinan paling kaya untuk emosi.
+    - Causality experiments: random assignment communication ban duration.
+      Korelasi → kausalitas.
+    - Crowdsource anotasi 50.000+ in-domain Dota chat. Estimasi naik F1-macro
+      sentimen dari 0.22 ke 0.55-0.65 berbasis literature.
+    - Per-player longitudinal: track toxicity/sentiment per pemain sepanjang
+      karir (account_id available).
+    - Toxicity intensification investigation: kenapa frekuensi turun tapi
+      severity naik? Apakah Valve communication ban hanya filter low-severity?
+
+
+
+================================================================================
+LAMPIRAN (RECOMMENDED)
+================================================================================
+
+A. ANNOTATION_GUIDELINE.md (data/gold/)
+B. correlation_tests.csv full (reports/) — 10 uji + BH-FDR
+C. temporal_tests.csv (reports/) — Mann-Kendall + Chow detail
+D. error_samples_*.csv (reports/) — 50+ FP/FN per model
+E. configs/experiment.yaml — manifest reproducibility
+   (hash, SHA, seed, hyperparameter, model checkpoint pin)
+F. Repo URL GitHub (link source code skripsi)
+
+
+
+================================================================================
+CRITICAL DISCLOSURE CHECKLIST
+================================================================================
+
+★ WAJIB cantumkan di metodologi + limitasi (BAB III + BAB IV §4.5):
+
+[1] Single-annotator AI mode (Pilihan B)
+    Lokasi: BAB III §3.5 + BAB IV §4.5.2
+    Reference: data/gold/agreement_report.md
+
+[2] Validation-test gap F1 0.73 → 0.22 = drop 0.51 poin
+    Lokasi: BAB IV §4.5.2
+    Reasoning: Domain shift TweetEval/Jigsaw → Dota chat substansial
+
+[3] Tier × toxicity NOT robust (per-match NS)
+    Lokasi: BAB IV §4.4.2 + BAB V §5.1 RQ3
+    Action: Turunkan klaim ke "marginal/eksploratori"
+
+[4] Effect size kecil (<0.10) walau p<0.05
+    Lokasi: BAB IV §4.4 + caption tabel
+    Reporting: SELALU cantumkan effect size + n bersama p-value
+
+[5] Phase derivation lemah (heuristik leaguename)
+    Lokasi: BAB IV §4.5.2
+    Reference: reports/contextual_features.md §4
+
+Kalau pembimbing tanya 5 disclosure ini terjawab, methodology defensible.
+
+
+
+================================================================================
+TOOLS PRAKTIS
+================================================================================
+
+# Markdown → Word docx (siap import ke skripsi)
+pandoc reports/CHAPTER4_SUMMARY.md -o chapter4.docx
+
+# Bundle semua reports → 1 PDF preview
+pandoc reports/*.md -o all_reports.pdf
+
+# Plot SVG → PDF (vector quality untuk print)
+inkscape reports/plots/temporal_yearly_overview.svg \
+    --export-pdf=temporal_yearly.pdf
+
+# Bibliography manager
+# Mendeley (https://www.mendeley.com)
+# atau Zotero (https://www.zotero.org) — free + plugin Word
+
+
+
+================================================================================
+ESTIMASI TIMELINE
+================================================================================
+
+BAB IV (paste + format)         : 1-2 hari
+BAB III (metodologi)            : 5-7 hari
+BAB I (revisi minor)            : 1 hari
+BAB II (literature review)      : 7-14 hari ★ paling lama
+BAB V (kesimpulan)              : 1-2 hari
+Daftar pustaka + lampiran       : 2 hari
+                                ----------
+DRAFT 1                         : ~3 minggu
+
+Revisi pembimbing iterasi       : 2-4 minggu
+
+TOTAL siap sidang               : 5-8 minggu
+
+
+
+================================================================================
+NEXT ACTION
+================================================================================
+
+[ ] Setup template Word/LaTeX skripsi BINUS
+[ ] Mulai BAB IV: pandoc CHAPTER4_SUMMARY.md → chapter4.docx
+[ ] Embed plot reports/plots/*.png
+[ ] Review BAB IV final draft
+[ ] Tulis BAB III (mundur dari hasil)
+[ ] Update BAB I dengan angka aktual
+[ ] BAB II: setup Mendeley/Zotero, mulai literature review
+[ ] BAB V: copy kesimpulan dari kerangka di atas
+[ ] Konsultasi pembimbing draft 1 lengkap
+[ ] Revisi sampai approve
+[ ] Sidang skripsi
+
+
+
+================================================================================
+REPO STRUCTURE REFERENCE
+================================================================================
+
+pre-thesis/
+├── notebooks/                 # 8 notebook eksekusi (NB01-NB08)
+├── src/                       # Module Python
+├── scripts/                   # Util scripts (label_batch.py, indo_*.py)
+├── data/
+│   ├── gold/
+│   │   ├── ANNOTATION_GUIDELINE.md     # PENTING - Lampiran A
+│   │   ├── TOOLING_DECISION.md          # Pilihan B disclosure
+│   │   ├── agreement_report.md          # Single-annotator note
+│   │   ├── gold_final.csv               # 7.971 label final
+│   │   ├── train.csv (5.579 baris)
+│   │   └── test.csv (2.392 baris)
+│   ├── processed/             # parquet (gitignored, regenerable)
+│   ├── inference/             # parquet (gitignored, regenerable)
+│   └── external/              # Jigsaw (gitignored, Kaggle TOS)
+├── models/                    # checkpoints (gitignored, 16 GB)
+├── reports/
+│   ├── CHAPTER4_SUMMARY.md    # ★ BAB IV ready
+│   ├── WRITING_PLAN.txt       # ← FILE INI
+│   ├── comparison_summary.md  # Tabel komparasi 4 model
+│   ├── eval_sentiment.csv
+│   ├── eval_toxicity.csv
+│   ├── temporal_monthly.csv
+│   ├── temporal_yearly.csv
+│   ├── temporal_tests.csv
+│   ├── event_comparison.csv
+│   ├── correlation_tests.csv
+│   ├── correlation_summary.md
+│   ├── correlation_robustness_per_match.csv
+│   ├── confusion_<model>_sentiment.{csv,png}
+│   ├── error_samples_<model>_sentiment.csv
+│   ├── jargon_error_breakdown.csv
+│   ├── contextual_features.md
+│   ├── run_log.csv            # 8 entries NB01-NB08
+│   └── plots/                 # 13 PNG + 13 SVG (gitignored SVG)
+├── configs/
+│   └── experiment.yaml        # ★ Manifest reproducibility
+├── openspec/
+│   ├── specs/                 # 7 capability spec
+│   └── changes/archive/       # Archived change history
+├── requirements.txt
+└── README.md
+
+================================================================================
+END OF WRITING PLAN
+================================================================================

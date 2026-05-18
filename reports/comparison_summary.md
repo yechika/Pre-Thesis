@@ -1,6 +1,6 @@
-# Ringkasan Perbandingan 4 Model
+# Comparison Summary: 4 Models
 
-## Sentimen 3-class
+## 3-Class Sentiment
 
 | model              |   accuracy |   accuracy_ci_lo |   accuracy_ci_hi |   f1_macro |   f1_macro_ci_lo |   f1_macro_ci_hi |   f1_negative |   f1_neutral |   f1_positive |
 |:-------------------|-----------:|-----------------:|-----------------:|-----------:|-----------------:|-----------------:|--------------:|-------------:|--------------:|
@@ -9,7 +9,7 @@
 | distilbert         |      0.395 |            0.376 |            0.415 |      0.217 |            0.197 |            0.244 |         0.050 |        0.559 |         0.043 |
 | detoxify_zero_shot |      0.419 |          nan     |          nan     |      0.380 |          nan     |          nan     |         0.170 |        0.590 |       nan     |
 
-## Toksisitas Multi-Label
+## Multi-Label Toxicity
 
 | model      |   f1_micro |   f1_micro_ci_lo |   f1_micro_ci_hi |   f1_macro |   hamming_loss |   subset_accuracy |   f1_toxic |   f1_severe_toxic |   f1_obscene |   f1_threat |   f1_insult |   f1_identity_hate |
 |:-----------|-----------:|-----------------:|-----------------:|-----------:|---------------:|------------------:|-----------:|------------------:|-------------:|------------:|------------:|-------------------:|

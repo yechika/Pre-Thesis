@@ -1,7 +1,8 @@
 /aisdlc
 /dota2_dataset_bersih
 .env
-npm
+node_modules/
+npm-debug.log*
 .agent
 .claude/
 /pdf_referensi
@@ -25,3 +26,9 @@ reports/plots/*.svg
 **/.ipynb_checkpoints/
 **/__pycache__/
 *.pyc
+
+# OS & IDE
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
