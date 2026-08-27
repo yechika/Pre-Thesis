@@ -1,0 +1,25 @@
+train support: {'toxic': 48, 'severe_toxic': 0, 'obscene': 39, 'threat': 0, 'insult': 46, 'identity_hate': 2}
+test  support: {'toxic': 20, 'severe_toxic': 0, 'obscene': 14, 'threat': 0, 'insult': 20, 'identity_hate': 0}
+macro over supported labels: ['toxic', 'obscene', 'insult']
+
+bert: F1-micro 0.125 -> 0.139 (+0.014) | F1-macro(sup) 0.150 -> 0.141 (-0.009)
+    toxic          thr=0.93  F1 0.075 -> 0.080 (+0.005)
+    obscene        thr=0.36  F1 0.200 -> 0.182 (-0.018)
+    insult         thr=0.26  F1 0.174 -> 0.160 (-0.014)
+
+roberta: F1-micro 0.141 -> 0.165 (+0.023) | F1-macro(sup) 0.154 -> 0.168 (+0.015)
+    toxic          thr=0.94  F1 0.120 -> 0.129 (+0.009)
+    obscene        thr=0.27  F1 0.261 -> 0.222 (-0.039)
+    insult         thr=0.31  F1 0.080 -> 0.154 (+0.074)
+
+distilbert: F1-micro 0.128 -> 0.135 (+0.007) | F1-macro(sup) 0.137 -> 0.142 (+0.006)
+    toxic          thr=0.94  F1 0.108 -> 0.074 (-0.034)
+    obscene        thr=0.44  F1 0.211 -> 0.211 (+0.000)
+    insult         thr=0.04  F1 0.091 -> 0.143 (+0.052)
+
+detoxify: F1-micro 0.152 -> 0.136 (-0.016) | F1-macro(sup) 0.162 -> 0.142 (-0.020)
+    toxic          thr=0.83  F1 0.111 -> 0.143 (+0.032)
+    obscene        thr=0.25  F1 0.200 -> 0.174 (-0.026)
+    insult         thr=0.04  F1 0.174 -> 0.108 (-0.066)
+
+wrote reports/eval_toxicity_threshold_tuned.csv + _perlabel.csv + toxicity_threshold_tuning.md

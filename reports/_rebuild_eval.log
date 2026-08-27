@@ -1,0 +1,22 @@
+=== REBUILD EVAL ===  slang=True oversample=0.3 cw=balanced
+train(after oversample)=5810 val=558 test=2392 cw=[2.27, 0.916, 0.681]
+
+--- TRAIN bert sentiment (in-domain+slang) ---
+  bert: bal_acc=0.784 [0.726,0.843]  mcc=0.952 [0.939,0.963]  (1198s)
+
+--- TRAIN roberta sentiment (in-domain+slang) ---
+  roberta: bal_acc=0.813 [0.753,0.874]  mcc=0.945 [0.932,0.958]  (561s)
+
+--- TRAIN distilbert sentiment (in-domain+slang) ---
+  distilbert: bal_acc=0.802 [0.742,0.859]  mcc=0.910 [0.895,0.927]  (709s)
+
+wrote reports/eval_rebuilt_sentiment.csv
+
+=== TOXICITY: Detoxify slang ablation on gold test ===
+gold-test label support: {'toxic': 20, 'severe_toxic': 0, 'obscene': 14, 'threat': 0, 'insult': 20, 'identity_hate': 0}
+  detoxify_no_slang    mcc_macro=0.227 pr_auc_macro=0.080 pr_auc_micro=0.057
+  detoxify_slang       mcc_macro=0.220 pr_auc_macro=0.113 pr_auc_micro=0.075
+
+wrote reports/comparison_metrics_rebuilt.md
+
+=== DONE ===

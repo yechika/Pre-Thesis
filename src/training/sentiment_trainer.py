@@ -25,15 +25,30 @@ def fine_tune_sentiment(
     output_dir: Path,
     hyperparameters: dict[str, Any],
     seed: int = 42,
+    class_weights: list[float] | None = None,
 ) -> TrainingResult:
     """Fine-tune satu transformer untuk sentimen sequence classification.
 
-    train_df, val_df: kolom `text`, `label` (int).
+    train_df, val_df: kolom `text`, `label` (int). Text diasumsikan SUDAH
+    melewati ``translate_slang`` (lihat src/training/gold_loaders.py) supaya
+    train/inference paritas.
     label_names: contoh ['negative', 'neutral', 'positive'] atau ['negative', 'positive'].
+    class_weights: bobot per-kelas untuk weighted cross-entropy (tangani
+        imbalance, mis. kelas 'negative' yang langka). None = unweighted.
+
+    Metrik yang dilaporkan kini termasuk balanced_accuracy + MCC — keduanya
+    imbalance-robust dan dipakai di reports/comparison_metrics_extended.md.
     """
     import torch
     from datasets import Dataset
-    from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+    from sklearn.metrics import (
+        accuracy_score,
+        balanced_accuracy_score,
+        f1_score,
+        matthews_corrcoef,
+        precision_score,
+        recall_score,
+    )
     from transformers import (
         AutoModelForSequenceClassification,
         AutoTokenizer,
@@ -42,6 +57,26 @@ def fine_tune_sentiment(
         TrainingArguments,
         set_seed,
     )
+
+    class WeightedTrainer(Trainer):
+        """Trainer dengan weighted cross-entropy untuk imbalance kelas."""
+
+        def __init__(self, *args, class_weight_tensor=None, **kwargs):
+            super().__init__(*args, **kwargs)
+            self._cw = class_weight_tensor
+
+        def compute_loss(
+            self, model, inputs, return_outputs=False, num_items_in_batch=None
+        ):
+            labels = inputs.pop("labels")
+            outputs = model(**inputs)
+            logits = outputs.logits
+            weight = (
+                self._cw.to(logits.device) if self._cw is not None else None
+            )
+            loss_fn = torch.nn.CrossEntropyLoss(weight=weight)
+            loss = loss_fn(logits.view(-1, logits.size(-1)), labels.view(-1))
+            return (loss, outputs) if return_outputs else loss
 
     set_seed(seed)
     output_dir = Path(output_dir)
@@ -68,6 +103,8 @@ def fine_tune_sentiment(
         preds = np.argmax(logits, axis=-1)
         return {
             "accuracy": accuracy_score(labels, preds),
+            "balanced_accuracy": balanced_accuracy_score(labels, preds),
+            "mcc": matthews_corrcoef(labels, preds),
             "f1_macro": f1_score(labels, preds, average="macro"),
             "precision_macro": precision_score(labels, preds, average="macro", zero_division=0),
             "recall_macro": recall_score(labels, preds, average="macro", zero_division=0),
@@ -94,7 +131,12 @@ def fine_tune_sentiment(
         save_total_limit=2,
     )
 
-    trainer = Trainer(
+    cw_tensor = (
+        torch.tensor(list(class_weights), dtype=torch.float)
+        if class_weights is not None
+        else None
+    )
+    trainer = WeightedTrainer(
         model=model,
         args=args,
         train_dataset=train_ds,
@@ -102,6 +144,7 @@ def fine_tune_sentiment(
         processing_class=tokenizer,  # transformers v5+ (was 'tokenizer' di v4)
         compute_metrics=compute_metrics,
         callbacks=[EarlyStoppingCallback(early_stopping_patience=2)],
+        class_weight_tensor=cw_tensor,
     )
     trainer.train()
     # Skip trainer.evaluate() — bug di transformers v5 + Jupyter

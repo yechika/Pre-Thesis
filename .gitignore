@@ -5,7 +5,9 @@ node_modules/
 npm-debug.log*
 .agent
 .claude/
+.gemini
 /pdf_referensi
+/#dokumen-penting
 .venv
 
 # Eksperimen skripsi — output yang tidak di-track

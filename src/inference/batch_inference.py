@@ -8,7 +8,22 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from src.preprocessing import translate_slang
+
 KEY_COLS = ["match_id", "time", "player_slot"]
+
+
+def _prepare_texts(df: pd.DataFrame, text_col: str, apply_slang: bool) -> list[str]:
+    """Raw chat -> model input. Applies slang translation for train/infer parity.
+
+    Models are fine-tuned on slang-translated text (see gold_loaders /
+    notebook 04), so inference MUST translate too or the input distribution
+    shifts and predictions degrade.
+    """
+    raw = df[text_col].fillna("").astype(str)
+    if apply_slang:
+        return raw.map(translate_slang).tolist()
+    return raw.tolist()
 
 
 @dataclass
@@ -79,10 +94,12 @@ def infer_folder(
     batch_size: int = 128,
     fp16: bool = True,
     text_col: str = "key",
+    apply_slang: bool = True,
 ) -> InferenceStats:
     """Inferensi satu file `data/processed/<folder>.parquet`.
 
     Skip jika `out_path` sudah ada (idempotent).
+    apply_slang: translate Dota slang sebelum inference (paritas dengan training).
     """
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -93,7 +110,7 @@ def infer_folder(
         )
 
     df = pd.read_parquet(processed_path)
-    texts = df[text_col].fillna("").astype(str).tolist()
+    texts = _prepare_texts(df, text_col, apply_slang)
 
     pipe = _make_pipeline(model_dir, task=task, batch_size=batch_size, fp16=fp16)
     raw_results = pipe(texts, truncation=True)
@@ -144,11 +161,14 @@ def infer_detoxify(
     out_path: Path,
     batch_size: int = 128,
     text_col: str = "key",
+    apply_slang: bool = True,
 ) -> InferenceStats:
     """Inferensi via `unitary/toxic-bert` pretrained (tanpa fine-tune tambahan).
 
     Output 6 label Detoxify default: toxic, severe_toxic, obscene, threat,
     insult, identity_hate.
+    apply_slang: translate Dota slang dulu supaya input seragam dengan model
+    fine-tuned (fair comparison) + Detoxify mengenali jargon toksik Dota.
     """
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -161,7 +181,7 @@ def infer_detoxify(
     from detoxify import Detoxify
 
     df = pd.read_parquet(processed_path)
-    texts = df[text_col].fillna("").astype(str).tolist()
+    texts = _prepare_texts(df, text_col, apply_slang)
 
     device = _device()
     model = Detoxify("original", device=device)

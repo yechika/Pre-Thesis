@@ -91,6 +91,15 @@ public_datasets:
     source_url: https://github.com/msang/hateval
     sha256: <TBD>
     local_path: data/external/hateeval
+preprocessing:
+  slang_translation: true
+  oversample_minority_frac: 0.3
+  class_weight_scheme: balanced
+  pos_weight_cap: 50.0
+  augment_toxicity_with_gold: true
+training_sources:
+  sentiment: gold
+  toxicity: jigsaw
 hyperparameters:
   sentiment:
     learning_rate: 2.0e-05

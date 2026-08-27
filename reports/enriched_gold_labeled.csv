@@ -1,0 +1,243 @@
+idx,year,key,lex,max_toxicity_prob,sentiment,y_toxic,y_severe_toxic,y_obscene,y_threat,y_insult,y_identity_hate,detox_pred_toxic
+0,2019,km kpn upload nude,False,0.8251267075538635,neutral,1,0,1,0,0,0,1
+1,2016,xd 5k trash,True,0.8429377675056458,negative,1,0,0,0,1,0,1
+2,2023,pls stop fucking us,True,0.991754412651062,negative,1,0,1,0,0,0,1
+3,2023,puz1ch karaoke,False,0.7090135216712952,neutral,0,0,0,0,0,0,1
+4,2018,ngeleg anjing,True,0.007925300858914852,negative,1,0,1,0,0,0,0
+5,2025,sorry i meant shitstallis),True,0.5283169746398926,neutral,0,0,1,0,0,0,1
+6,2025,nilabas yung puck luge,False,0.5050941109657288,neutral,0,0,0,0,0,0,1
+7,2026,we didnt know,False,0.8581088781356812,neutral,0,0,0,0,0,0,1
+8,2024,go buy smoke and hook mid blokcing creeps,False,0.6074786186218262,neutral,0,0,0,0,0,0,1
+9,2016,airtel also shit,True,0.001660320209339261,negative,1,0,1,0,0,0,0
+10,2021,no trash talk,True,0.5061794519424438,neutral,0,0,0,0,0,0,1
+11,2023,gl tag from hell!!!,False,0.6938237547874451,neutral,0,0,0,0,0,0,1
+12,2018,glhf pls go ez on us,False,0.6184360980987549,positive,0,0,0,0,0,0,1
+13,2017,nope 2 peeing,False,0.9081695079803467,neutral,0,0,0,0,0,0,1
+14,2024,husky murdering his brother,False,0.8195886611938477,neutral,0,0,0,0,0,0,1
+15,2024,get these europeans ouyt of here,False,0.8480626940727234,negative,1,0,0,0,0,0,1
+16,2025,all the bad bitches in my direction,True,0.9424256682395935,neutral,0,0,1,0,0,0,1
+17,2024,what a zesty phraze skiter,False,0.8927274346351624,neutral,0,0,0,0,0,0,1
+18,2026,el idiota,True,0.006637518294155598,negative,1,0,0,0,1,0,0
+19,2020,bro wtf,False,0.8040188550949097,neutral,0,0,0,0,0,0,1
+20,2023,bi batsaanaagiin couch ni bolii,False,0.7187983393669128,neutral,0,0,0,0,0,0,1
+21,2022,OMGGGGGGGG,False,0.570144772529602,neutral,0,0,0,0,0,0,1
+22,2023,gl hfhfhfhf hf glglglglg,False,0.6719974875450134,positive,0,0,0,0,0,0,1
+23,2018,1 fak,False,0.7129159569740295,neutral,0,0,1,0,0,0,1
+24,2021,GGGGG!,False,0.6147955060005188,positive,0,0,0,0,0,0,1
+25,2020,rm goblok,True,0.0011767889373004436,negative,1,0,0,0,1,0,0
+26,2024,fucked by zxcepreu,True,0.9927600622177124,negative,1,0,1,0,0,0,1
+27,2018,FDASGLJFDSAKHLFG SDHKPJLOAG FSADKOHJL,False,0.6708647608757019,neutral,0,0,0,0,0,0,1
+28,2022,pisdaaaaaaaaaaaaaaaaaaaaa,False,0.5655882358551025,neutral,1,0,1,0,0,0,1
+29,2020,happy birthday brayant fuckboy,True,0.9909459352493286,neutral,1,0,1,0,1,0,1
+30,2020,i was in bath,False,0.5104550719261169,neutral,0,0,0,0,0,0,1
+31,2019,jan dipause bego,True,0.012567202560603619,negative,1,0,0,0,1,0,0
+32,2019,kill gratis gua,False,0.8021401166915894,neutral,0,0,0,0,0,0,1
+33,2023,he stupid?,True,0.0011215866543352604,negative,1,0,0,0,1,0,0
+34,2017,reestarting computer,False,0.7607090473175049,neutral,0,0,0,0,0,0,1
+35,2018,semut kontol,True,0.004873932339251041,negative,1,0,1,0,0,0,0
+36,2021,takut kalaaah luruus lempeeng,False,0.5500322580337524,neutral,0,0,0,0,0,0,1
+37,2022,r?,False,0.9081695079803467,neutral,0,0,0,0,0,0,1
+38,2025,WOI CATA NYA MANA ANJING,True,0.01960037834942341,negative,1,0,1,0,0,0,0
+39,2023,i mean the majority of our pauses were because of their camera shit xd,True,0.004443628713488579,neutral,0,0,1,0,0,0,0
+40,2024,niceplay noob,True,0.7495980858802795,negative,1,0,0,0,1,0,1
+41,2024,bullshit we banned ursa,False,0.980227530002594,negative,1,0,1,0,0,0,1
+42,2024,you guys are crazy,False,0.9416503310203552,neutral,0,0,0,0,0,0,1
+43,2021,joget tiktok habis joget uncH,False,0.9385135769844055,neutral,0,0,0,0,0,0,1
+44,2016,u too jugg,False,0.5408248901367188,neutral,0,0,0,0,0,0,1
+45,2022,fuckin dog,True,0.9987491369247437,negative,1,0,1,0,1,0,1
+46,2016,go big or go home,False,0.5408248901367188,neutral,0,0,0,0,0,0,1
+47,2026,all good,False,0.8581088781356812,positive,0,0,0,0,0,0,1
+48,2019,lama amat anjing stun siapa,True,0.08736556768417358,negative,1,0,1,0,0,0,0
+49,2019,kntl meksmun,True,0.18241864442825317,negative,1,0,1,0,0,0,0
+50,2016,some shit happens :O,True,0.9664594531059265,neutral,0,0,1,0,0,0,1
+51,2021,cuma bisa KS,False,0.5662573575973511,neutral,0,0,0,0,0,0,1
+52,2019,kau yg tolol,True,0.03817175328731537,negative,1,0,0,0,1,0,0
+53,2017,dickos shed for all your gaming needs,True,0.7945343852043152,neutral,0,0,1,0,0,0,1
+54,2026,Wtf pota no hero,False,0.8292219042778015,neutral,0,0,0,0,0,0,1
+55,2026,your welcome,False,0.5791516304016113,neutral,0,0,0,0,0,0,1
+56,2023,a ya tebe pososi mask,False,0.5214976072311401,negative,1,0,1,0,1,0,1
+57,2026,our shitty captain sucked my cock yesterday,True,0.9960706233978271,negative,1,0,1,0,1,0,1
+58,2021,ni bi xu chigeli,False,0.5090683698654175,neutral,0,0,0,0,0,0,1
+59,2019,CON TUS COSAS,False,0.7015380263328552,neutral,0,0,0,0,0,0,1
+60,2026,oh fuck off bro,True,0.0009243296226486564,negative,1,0,1,0,1,0,0
+61,2022,yeah he noob,True,0.7506807446479797,negative,1,0,0,0,1,0,1
+62,2026,-shtraf admin invoker buyback 1$ justice 2026 shit league,True,0.8206881284713745,negative,1,0,1,0,0,0,1
+63,2025,bugger,False,0.6705382466316223,neutral,0,0,1,0,0,0,1
+64,2018,kalo dikasih tau dengenrin ngentot,True,0.0899306908249855,negative,1,0,1,0,0,0,0
+65,2020,console users,False,0.9924622774124146,neutral,0,0,0,0,0,0,1
+66,2025,whos chicken now,False,0.6067408323287964,neutral,0,0,0,0,0,0,1
+67,2019,emng ank kntl,True,0.043593037873506546,negative,1,0,1,0,1,0,0
+68,2017,masih noob,True,0.09883391857147217,negative,1,0,0,0,1,0,0
+69,2021,ya podumau,False,0.6558631658554077,neutral,0,0,0,0,0,0,1
+70,2018,sabar sateh goblok,True,0.0025416151620447636,negative,1,0,0,0,1,0,0
+71,2021,GL BRO i m noob,True,0.22710858285427094,positive,0,0,0,0,0,0,0
+72,2025,idk my zoomers spouting some shit all day,True,0.9871068596839905,neutral,0,0,1,0,0,0,1
+73,2022,never trash talking you,True,0.7184405326843262,neutral,0,0,0,0,0,0,1
+74,2020,fuck u crystallis dotaaaa,True,0.997857391834259,negative,1,0,1,0,1,0,1
+75,2022,jonel,False,0.840966522693634,neutral,0,0,0,0,0,0,1
+76,2017,dw this shit isnt happening,True,0.047815799713134766,neutral,0,0,1,0,0,0,0
+77,2023,at top,False,0.9081695079803467,neutral,0,0,0,0,0,0,1
+78,2022,ramz detect memek eater,True,0.04373256489634514,negative,1,0,1,0,1,0,0
+79,2019,dont be mad pls,False,0.7179228067398071,positive,0,0,0,0,0,0,1
+80,2018,jadi gay,True,0.8484559655189514,neutral,1,0,0,0,0,0,1
+81,2023,YA TVOUY FANAT!!!,False,0.7426208257675171,neutral,0,0,0,0,0,0,1
+82,2025,do we have,False,0.9809045195579529,neutral,0,0,0,0,0,0,1
+83,2016,fucken TPG,True,0.9944990277290344,negative,1,0,1,0,0,0,1
+84,2016,how come 20fps,False,0.9081695079803467,neutral,0,0,0,0,0,0,1
+85,2024,AMAR THE FUCKER,True,0.995248019695282,negative,1,0,1,0,1,0,1
+86,2017,is blinking fucked for you guys??,True,0.9914997220039368,neutral,0,0,1,0,0,0,1
+87,2017,"When game is going full retard, you can only go with it. If you start going against it, if you start going half retard, you're",True,0.9152064919471741,neutral,1,0,0,0,0,0,1
+88,2022,new patch new gay,True,0.7497077584266663,neutral,1,0,0,0,0,0,1
+89,2016,new update hotkey bind is so fucked up,True,0.9881298542022705,neutral,0,0,1,0,0,0,1
+90,2018,only for girls my tip,False,0.9149502515792847,neutral,0,0,0,0,0,0,1
+91,2019,just eat your own dick,True,0.038170840591192245,negative,1,0,1,0,1,0,0
+92,2022,u're my crash,False,0.8083467483520508,neutral,0,0,0,0,0,0,1
+93,2017,".bot, .box",False,0.6231788992881775,neutral,0,0,0,0,0,0,1
+94,2020,emang bangsat nih Telkomsel,True,0.0010817631846293807,negative,1,0,1,0,0,0,0
+95,2020,"his pc is rather trash, so its taking longer than u'd expect",True,0.0009501902968622744,neutral,0,0,0,0,0,0,0
+96,2026,blya a on ne mog all pick sdelat',False,0.585566520690918,neutral,0,0,1,0,0,0,1
+97,2023,cuiras con satanic,False,0.5049091577529907,neutral,0,0,0,0,0,0,1
+98,2016,do rosh again in another hour i dare you,False,0.7803730964660645,neutral,0,0,0,0,0,0,1
+99,2020,standin kontol,True,0.0021691920701414347,negative,1,0,1,0,0,0,0
+100,2023,noob please restart cam,True,0.2838236689567566,neutral,1,0,0,0,1,0,0
+101,2018,ritsu piss,False,0.8139013648033142,neutral,0,0,1,0,0,0,1
+102,2026,noob puck,True,0.6336492300033569,negative,1,0,0,0,1,0,1
+103,2022,can i pause to pee when we start ill be 1 min,False,0.6544989347457886,neutral,0,0,0,0,0,0,1
+104,2019,HANS GOBLOK ROMBAK MODAR,True,0.0027714925818145275,negative,1,0,0,0,1,0,0
+105,2016,fuck yeah,True,0.9865282773971558,positive,0,0,1,0,0,0,1
+106,2022,gg ez obs,False,0.6306883692741394,negative,1,0,0,0,0,0,1
+107,2022,i'll give u the tip of my d***,False,0.9448867440223694,negative,1,0,1,0,1,0,1
+108,2020,duruk mmr anjing,True,0.01291696447879076,negative,1,0,1,0,0,0,0
+109,2016,banget,False,0.6212876439094543,neutral,0,0,0,0,0,0,1
+110,2019,comeback ini anjing,True,0.0054702674970030785,neutral,1,0,1,0,0,0,0
+111,2025,OCE DULU,False,0.5692776441574097,neutral,0,0,0,0,0,0,1
+112,2020,im jealous fck,False,0.7285821437835693,neutral,0,0,1,0,0,0,1
+113,2019,maafkan temen toxic ku,False,0.7450658082962036,positive,0,0,0,0,0,0,1
+114,2022,Ag.bob.NGENTOT,True,0.00961166713386774,neutral,1,0,1,0,0,0,0
+115,2026,UNREAL,False,0.9941309094429016,neutral,0,0,0,0,0,0,1
+116,2020,mah ta,False,0.9887182712554932,neutral,0,0,0,0,0,0,1
+117,2016,hahaha,False,0.8859239220619202,positive,0,0,0,0,0,0,1
+118,2017,someone shitting,True,0.957288920879364,neutral,0,0,1,0,0,0,1
+119,2018,stop msging me,False,0.5277889966964722,neutral,0,0,0,0,0,0,1
+120,2021,Trash goat,True,0.0007784412009641528,negative,1,0,0,0,1,0,0
+121,2023,go 1x1 noob,True,0.8058394193649292,negative,1,0,0,0,1,0,1
+122,2022,KE TAI YU LE L,True,0.06725865602493286,neutral,0,0,0,0,0,0,0
+123,2018,jadi laper fak,False,0.6326398253440857,neutral,0,0,1,0,0,0,1
+124,2020,ahhaha fuck u,True,0.9963628649711609,negative,1,0,1,0,1,0,1
+125,2022,can u guys ask him to hurry up shitting,True,0.02662191540002823,neutral,0,0,1,0,0,0,0
+126,2024,i got shit to do,True,0.002435714937746525,neutral,0,0,1,0,0,0,0
+127,2023,hoyl shit,True,0.9718675017356873,neutral,0,0,1,0,0,0,1
+128,2017,fuck rajjix,True,0.9956448078155518,negative,1,0,1,0,1,0,1
+129,2026,bro is playing on the fucking toster so he cant join,True,0.9960706233978271,neutral,0,0,1,0,0,0,1
+130,2024,fuck lag,True,0.9963181018829346,negative,1,0,1,0,0,0,1
+131,2021,u mad babyboy?,False,0.7889100313186646,negative,1,0,0,0,1,0,1
+132,2017,bahaha,False,0.5556634068489075,positive,0,0,0,0,0,0,1
+133,2025,u dead,False,0.8001606464385986,neutral,0,0,0,0,0,0,1
+134,2016,cok kluar 3 bash,True,0.003568605985492468,neutral,1,0,1,0,0,0,0
+135,2016,hey are u guys from shitalaide aswell?,True,0.07627224922180176,neutral,0,0,1,0,0,0,0
+136,2025,MEDUSAAAAAAAAAAAAAAAAAAAAAA,False,0.9081695079803467,neutral,0,0,0,0,0,0,1
+137,2020,com essa porra,False,0.9887182712554932,neutral,0,0,1,0,0,0,1
+138,2017,pisal,False,0.5440222024917603,neutral,0,0,0,0,0,0,1
+139,2023,im just noob,True,0.6928042769432068,positive,0,0,0,0,0,0,1
+140,2026,no im noob now,True,0.39633890986442566,neutral,0,0,0,0,0,0,0
+141,2024,sure fuckin hope so,True,0.9874196648597717,neutral,0,0,1,0,0,0,1
+142,2017,whos the nigger invis,True,0.9786540865898132,negative,1,0,1,0,1,1,1
+143,2023,I only tip my bitches,True,0.9905933737754822,neutral,0,0,1,0,0,0,1
+144,2021,tiap hari aja anjing,True,0.003216699929907918,neutral,1,0,1,0,0,0,0
+145,2025,U kick momo,False,0.9603549242019653,neutral,0,0,0,0,0,0,1
+146,2019,LIAT GW MAEN PUDG,False,0.6354941725730896,neutral,0,0,0,0,0,0,1
+147,2018,stupid,True,0.001166917965747416,negative,1,0,0,0,1,0,0
+148,2022,u play everyday or some shit,True,0.979794979095459,neutral,0,0,1,0,0,0,1
+149,2021,let him live,False,0.6220738291740417,neutral,0,0,0,0,0,0,1
+150,2017,dude wat the fuck,True,0.9925351142883301,neutral,0,0,1,0,0,0,1
+151,2025,go cachudo,False,0.5907273292541504,negative,1,0,0,0,1,0,1
+152,2017,i hit f9 again,False,0.9871507883071899,neutral,0,0,0,0,0,0,1
+153,2016,hello,False,0.9947609305381775,positive,0,0,0,0,0,0,1
+154,2026,OR NOOB,True,0.0009043127647601068,negative,1,0,0,0,1,0,0
+155,2025,noob team..,True,0.11069326847791672,negative,1,0,0,0,1,0,0
+156,2021,fuck yall,True,0.9947516322135925,negative,1,0,1,0,1,0,1
+157,2016,stupid serv,True,0.9875654578208923,negative,1,0,0,0,0,0,1
+158,2024,GG!!!!!!!!!!!!!!!,False,0.5002651810646057,positive,0,0,0,0,0,0,1
+159,2021,kepin asu,True,0.009228851646184921,negative,1,0,1,0,1,0,0
+160,2019,RAPE SCENE HAHAHA,False,0.6172813773155212,negative,1,0,0,0,0,0,1
+161,2026,g apostamos ?,False,0.8955536484718323,neutral,0,0,0,0,0,0,1
+162,2020,im a nerd.,False,0.753250241279602,neutral,0,0,0,0,0,0,1
+163,2021,essa eh facil,False,0.5286432504653931,neutral,0,0,0,0,0,0,1
+164,2024,toxic wtf,False,0.9061921238899231,neutral,0,0,0,0,0,0,1
+165,2026,NO TENGO YA,False,0.5141268968582153,neutral,0,0,0,0,0,0,1
+166,2019,and his monster cockl,False,0.9492201805114746,neutral,0,0,1,0,0,0,1
+167,2021,descending trash splicko,True,0.8479044437408447,negative,1,0,0,0,1,0,1
+168,2017,this is some end shit right here,True,0.009704465977847576,neutral,0,0,1,0,0,0,0
+169,2023,idiot 2iq bots,True,0.9590450525283813,negative,1,0,0,0,1,0,1
+170,2019,11-0 kotl game inc,False,0.9400890469551086,neutral,0,0,0,0,0,0,1
+171,2021,GAAAAAAAAAArdick,False,0.736957848072052,neutral,0,0,1,0,0,0,1
+172,2026,Gausah pura2 gatau anjing,True,0.06217925250530243,negative,1,0,1,0,0,0,0
+173,2023,retards?,True,0.8491172194480896,negative,1,0,0,0,1,0,1
+174,2018,katanya ke toilet,False,0.8859239220619202,neutral,0,0,0,0,0,0,1
+175,2019,NECRO NOOB,True,0.2667233347892761,negative,1,0,0,0,1,0,0
+176,2018,That and hes a cuck,False,0.92831951379776,negative,1,0,1,0,1,0,1
+177,2016,its funny that u cant do shit other than comboing a trashsupport,True,0.9764333367347717,negative,1,0,1,0,1,0,1
+178,2024,aboslute CargnAGe in THE fuCKing tRAIgLNAE,True,0.9978012442588806,neutral,0,0,1,0,0,0,1
+179,2025,WTF MID DIFF,False,0.8141342997550964,negative,1,0,0,0,1,0,1
+180,2023,i only had at hotel,False,0.9081695675849915,neutral,0,0,0,0,0,0,1
+181,2018,asu kontol memek jembut,True,0.015952562913298607,negative,1,0,1,0,1,0,0
+182,2022,ggggooo,False,0.7830197215080261,neutral,0,0,0,0,0,0,1
+183,2024,ILL FUCKING KILL MYSELF,True,0.9936123490333557,negative,1,0,1,0,0,0,1
+184,2019,kILL SINI GUA,False,0.872624397277832,neutral,0,0,0,0,0,0,1
+185,2022,tino and shanks gay,True,0.8159842491149902,negative,1,0,0,0,1,0,1
+186,2019,kaget sumpah cuk,True,0.6540061235427856,neutral,0,0,1,0,0,0,1
+187,2023,anagold wtf,False,0.6646075248718262,neutral,0,0,0,0,0,0,1
+188,2025,gl anj,True,0.016801228746771812,neutral,0,0,1,0,0,0,0
+189,2020,GE WAHyt?,False,0.6765172481536865,neutral,0,0,0,0,0,0,1
+190,2025,ako ni biqt e over,False,0.5261235237121582,neutral,0,0,0,0,0,0,1
+191,2021,anjing lu ki,True,0.0013483923394232988,negative,1,0,1,0,1,0,0
+192,2026,kulit mo pudge,False,0.7216445207595825,neutral,0,0,0,0,0,0,1
+193,2020,gg idiots,True,0.9775197505950928,negative,1,0,0,0,1,0,1
+194,2025,GET UR FUCKING ENERGY DRINKS,True,0.9971476197242737,neutral,0,0,1,0,0,0,1
+195,2026,wTF 30,False,0.7589166760444641,neutral,0,0,0,0,0,0,1
+196,2018,ngomong apa si kontol,True,0.2039085179567337,negative,1,0,1,0,1,0,0
+197,2026,anjing kaget gw,True,0.543502151966095,neutral,1,0,1,0,0,0,1
+198,2017,+25 mmr for this shit,True,0.9721245765686035,neutral,0,0,1,0,0,0,1
+199,2016,wkeowkeowk,False,0.5692776441574097,positive,0,0,0,0,0,0,1
+200,2023,The fucking bagre,True,0.9979390501976013,neutral,0,0,1,0,0,0,1
+201,2025,gg ez noobs,True,0.7534108757972717,negative,1,0,0,0,1,0,1
+202,2026,wtf 190cm,False,0.7381883263587952,neutral,0,0,0,0,0,0,1
+203,2017,sniper piss,False,0.7617948651313782,neutral,0,0,1,0,0,0,1
+204,2019,I mean freak,False,0.9921810626983643,neutral,0,0,0,0,0,0,1
+205,2018,dari pada lo babi,True,0.13579468429088593,negative,1,0,1,0,1,0,0
+206,2016,emang u goblok aslinua,True,0.027758875861763954,negative,1,0,0,0,1,0,0
+207,2018,OKAKOWKOAKOWKOA,False,0.8624120950698853,neutral,0,0,0,0,0,0,1
+208,2021,SHOUYT TO AMAR THE FUCKER,True,0.9943721294403076,negative,1,0,1,0,1,0,1
+209,2022,you are the one crybaby,False,0.9278889894485474,negative,1,0,0,0,1,0,1
+210,2022,womy,False,0.9081695079803467,neutral,0,0,0,0,0,0,1
+211,2016,please dont fake gg again,False,0.616285502910614,neutral,0,0,0,0,0,0,1
+212,2020,bkb to kill me,False,0.5595043897628784,neutral,0,0,0,0,0,0,1
+213,2020,is retarded,True,0.9141175150871277,negative,1,0,0,0,1,0,1
+214,2018,kill me mid,False,0.7525577545166016,neutral,0,0,0,0,0,0,1
+215,2017,cant gg out,False,0.7305183410644531,neutral,0,0,0,0,0,0,1
+216,2018,pas skarat goblok,True,0.010127241723239422,negative,1,0,0,0,1,0,0
+217,2018,they record like kda n shit,True,0.9571057558059692,neutral,0,0,1,0,0,0,1
+218,2017,m8 I'm right here,False,0.9728638529777527,neutral,0,0,0,0,0,0,1
+219,2024,toxic dog,False,0.6712117195129395,negative,1,0,0,0,1,0,1
+220,2026,kata pangonya palalu kek kntl,True,0.007990775629878044,negative,1,0,1,0,0,0,0
+221,2021,TRIED TO BOARDSLIDE AND HIT MY FUCKIN NUTS ON IT,True,0.9957643747329712,neutral,0,0,1,0,0,0,1
+222,2022,okay memek womy,True,0.020042233169078827,negative,1,0,1,0,0,0,0
+223,2016,sec need to pee,False,0.8739317059516907,neutral,0,0,0,0,0,0,1
+224,2020,kobe die bg sad awak,False,0.9639006853103638,neutral,0,0,0,0,0,0,1
+225,2025,well shit xD,True,0.9780747890472412,neutral,0,0,1,0,0,0,1
+226,2017,show ur ass,False,0.9954657554626465,negative,1,0,1,0,0,0,1
+227,2021,udah kaya nama pokemon babi,True,0.04190472885966301,neutral,0,0,1,0,0,0,0
+228,2024,ya me fui,False,0.7466123700141907,neutral,0,0,0,0,0,0,1
+229,2023,waiting semen,False,0.9650648236274719,neutral,0,0,1,0,0,0,1
+230,2017,GO SMOKE,False,0.9421883225440979,neutral,0,0,0,0,0,0,1
+231,2020,sec he s lag,False,0.6217189431190491,neutral,0,0,0,0,0,0,1
+232,2019,ngaca anjing,True,0.0018876178655773401,negative,1,0,1,0,1,0,0
+233,2021,keep hang,False,0.6632351875305176,neutral,0,0,0,0,0,0,1
+234,2025,he try play mobile legend but noob only got epic,True,0.07532601803541183,negative,1,0,0,0,1,0,0
+235,2024,ivyl tai,True,0.004381278064101934,negative,1,0,1,0,0,0,0
+236,2016,wait toilet,False,0.5412840247154236,neutral,0,0,0,0,0,0,1
+237,2024,opening mr budi beast cok,True,0.003630646038800478,neutral,0,0,1,0,0,0,0
+238,2024,trash IHl,True,0.792523980140686,negative,1,0,0,0,1,0,1
+239,2025,noob cc ..,True,0.06187419965863228,negative,1,0,0,0,1,0,0
+240,2020,Teals so fucking low skilled it ssickening,True,0.9909482598304749,negative,1,0,1,0,1,0,1
+241,2024,soon,False,0.5692775249481201,neutral,0,0,0,0,0,0,1
