@@ -34,3 +34,6 @@ reports/plots/*.svg
 .idea/
 Thumbs.db
 .DS_Store
+
+# Pilot annotation files (local only)
+data/gold/archive_pilot/

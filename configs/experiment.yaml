@@ -16,9 +16,9 @@ data:
   inference_root: data/inference
   data_processed_hash: f692bb679a878a669de98a752376abf14137aff2ec2412bb0b7933591c9b3f3b
   gold_split_hash:
-    train: 643fb3b1133bd6b468ad41993088a63ebe95b306cfd2436cc15326e0afa5a3b4
-    test: e010cd39e9d39d7fbe530daed1842dfc8f929c216c95932337366d0bf0b08701
-    sample: 120fa94fcb2b5ec97d662e21dfb2faa8f686d5922bbe557b48b8b3e211683031
+    train: 87cf6e629fd05691651fb9aa5a0ce071de311e302eac45b2561c598a7533eeb5
+    test: 91cd909e6ec914b4b2da8a386939a6cabbc122bb26048f358121a0eb811b3c0a
+    sample: e18abb4ea4b5ef733524ab129caf168fd72acd619dabf5d3cc8fac663a6c4438
 folders:
 - '2016'
 - '2017'
@@ -49,7 +49,7 @@ annotation:
   pilot_size: 200
   kappa_threshold_sentiment: 0.6
   alpha_threshold_toxicity: 0.55
-  mode: <TBD>
+  mode: manual_3_annotators
 labels:
   sentiment_classes:
   - negative

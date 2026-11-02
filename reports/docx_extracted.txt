@@ -1,0 +1,294 @@
+ICIC Express LettersICIC International ©2026 ISSN 1881-803X
+Volume XX, Number X, 2026pp. 1–8
+Comparative Sentiment Analysis and Toxicity Detection on Professional Dota 2 In-Game Chat: A Decade Review (2016–2026)
+Daniel Dirgantara1,*, Muhammad Dhitan Imam Sakti1, Aldiaz Kusuma Ramadhan1, and Eko Setyo Purwanto1
+1Computer Science Program
+School of Computer Science, Universitas Bina Nusantara
+Jakarta 11480, Indonesia
+{ muhammad.sakti004; aldiaz.ramadhan; eko.purwanto } @binus.ac.id
+*Corresponding author: daniel.dirgantara@binus.ac.id
+Received [Month] 2026; accepted [Month] 2026
+Abstract. This study analyzes sentiment and toxicity in professional Dota 2 in-game chat over a decade (2016–2026), covering 1,603,567 messages from 197,695 matches. Three questions are addressed: comparing four deep learning models (BERT, RoBERTa, DistilBERT, and Detoxify) on a gold-standard set of 7,971 messages; analyzing temporal trends and the influence of events such as meta shifts and COVID-19; and identifying contextual factors (match outcome, duration, tournament tier, phase, and time period). Detoxify (zero-shot) achieved the highest toxicity F1-micro (0.152, 95% CI [0.024, 0.294]), outperforming three fine-tuned models, while for three-class sentiment, in-domain fine-tuning on the gold training split recovered strongly (balanced accuracy 0.78–0.81, MCC 0.91–0.95), whereas the same architectures trained on out-of-domain Twitter data collapsed to worse-than-chance agreement. Mann–Kendall tests show significantly declining sentiment (τ=−0.58, p<10⁻¹⁶) and a toxicity 'intensification' pattern: falling frequency (τ=−0.50) yet rising severity (τ=+0.32). Chow tests confirm the COVID-19 onset (March 2020) as the strongest structural breakpoint. After Benjamini–Hochberg correction, match duration (ρ=−0.080) and outcome (r=0.060) correlate significantly with toxicity. The findings clarify communication evolution in professional Dota 2 esports and inform the design of automated content moderation systems.
+Keywords: Sentiment analysis, Toxicity detection, Dota 2, Esports, Deep learning, BERT, Natural Language Processing, In-game chat
+1. Introduction. Dota 2 is one of the most popular multiplayer online battle arena (MOBA) video games in the world, developed by Valve Corporation and officially released in 2013 [1]. With a global player base reaching millions of active users [1], Dota 2 has grown beyond an ordinary game and has become an internationally scaled electronic sport (esports). Prestigious tournaments such as The International, Majors, and various professional regional leagues serve as competitive arenas for hundreds of teams from around the world, with total prize pools reaching tens of millions of US dollars annually [2].
+Based on this background, the present study aims to fill the existing research gap by applying and comparing various sentiment analysis approaches and toxicity detection models on an in-game chat dataset of professional Dota 2 matches during the period 2016 to 2026, using all-chat and team-chat messages (in English) from The International, DPC Majors, and official DPC regional leagues. Specifically, three research questions are addressed: (1) how four deep learning models (BERT, RoBERTa, DistilBERT, and Detoxify) compare in classifying sentiment and detecting toxicity on professional Dota 2 in-game chat, based on accuracy, F1, balanced accuracy, MCC, and PR-AUC; (2) how sentiment and toxicity evolve temporally across the decade, including the influence of significant events such as meta shifts and the COVID-19 pandemic; and (3) which contextual factors—match outcome, match duration, tournament tier, tournament phase, and time period—correlate significantly with sentiment and toxicity. The results are expected to provide a comprehensive picture of the evolution of communication patterns, sentiment, and toxicity within the professional Dota 2 esports ecosystem over the last decade.
+2. Literature Review. Within the Dota 2 esports ecosystem, communication between players is a fundamental element that determines the dynamics of gameplay, particularly at the professional level of competition [3, 4]. One of the most intensively used communication mediums is the in-game chat feature, both in textual form during matches and in pre- and post-match periods. In-game chat not only functions as a means of strategic coordination but also reflects the emotional state, psychological pressure, and communication culture that develops within the esports community [5, 6].
+The phenomenon of toxicity in communication within the world of online gaming, including Dota 2, has long been a problem widely acknowledged by both the community and developers [1]. Toxicity refers to communicative behavior that is negative, destructive, and harmful, such as the use of harsh language, hate speech, harassment, provocation, and various other forms of digital bullying [7]. Such behavior is partly explained by the online disinhibition effect, in which anonymity and the absence of physical cues reduce communicative restraint in online interaction [8]. Valve Corporation itself has implemented several mechanisms to address toxicity, including a player reporting system, communication bans, and the Overwatch system [9]. Nevertheless, this issue persists and remains a significant challenge for both developers and the community [9].
+Research in sentiment analysis and toxicity detection within gaming communities has developed rapidly [10, 11]; however, most of it has focused on social media platforms or general game reviews [12]. Studies that specifically examine in-game chat in professional Dota 2 matches remain very limited. Furthermore, no research has yet comprehensively analyzed historical sentiment and toxicity trends over a decade-long span (2016–2026), a period that encompasses significant changes in the Dota 2 esports ecosystem, including meta shifts, the evolution of the player community, and the impact of global events such as the COVID-19 pandemic on online tournament operations [13].
+3. Methodology. This section details the data pipeline, annotation protocol, and statistical procedures that underpin the results reported in Section 4, organized into five subsections that follow the order in which the methods are applied.
+3.1 Data Acquisition and Pre-processing. Raw match-level chat logs were obtained from the public Kaggle dataset bwandowando/dota-2-pro-league-matches-2023 (via the kagglehub library), covering all professional Dota 2 matches from 1 January 2016 to 30 April 2026; OpenDota Constants snapshots (Leagues and Patch) supplied tournament tier and patch name. Chatwheel commands—preset phrases that do not represent natural communication—were removed, and langdetect language detection retained only English, with very short ASCII call-outs (e.g., ‘gg’, ‘ez’, ‘mid’) treated as English. The 274,087 non-English messages (Russian, Bulgarian, and others) were stored separately for future multilingual research, yielding a final corpus of 1,603,567 chat messages.
+3.2 Contextual Feature Engineering. Six features were derived from match metadata: tournament_tier (TI / Major / DPC Tour / Other, via an OpenDota Constants.Leagues lookup on league_id), patch_name (the patch in effect at each match’s start_time, from OpenDota Constants.Patch), tournament_phase (group-stage / playoffs / grand-final, inferred from league-name patterns, with ~99.6% falling to the ‘other’ category), match_outcome (win/loss from the radiant_win field), duration (match length in seconds), and period (a three-bin calendar marker: 2016–2018 / 2019–2021 / 2022–2026). The correlation analysis uses five of these; patch_name, with its many categorical levels, is excluded and instead used as a descriptive segmentation variable in the temporal analysis.
+3.3 Gold-Standard Annotation and Split. A stratified random sample of 8,002 messages was drawn from the analytical corpus. Stratification variables: calendar year (11 strata: 2016–2026), tournament tier (4 strata: TI / Major / DPC Tour / Other), and match outcome from the player's viewpoint (2 strata: win / loss). After deduplication of 31 message keys, 7,971 unique messages remained. Each message was manually annotated by the authors with one 3-class sentiment label and six binary toxicity labels (Jigsaw taxonomy). An is_ambiguous flag was applied to 38.1% of samples (cases with ambiguous sentiment or ≥ 2 co-fired toxicity labels); all major statistics were re-checked on the unambiguous subset for sensitivity. The annotated set was split 70/30 (5,579 training / 2,392 test) using stratified sampling by sentiment label, with zero message-key overlap.
+3.4 Model Training and Inference. The three fine-tuned models (BERT-base-uncased, RoBERTa-base, DistilBERT-base-uncased) were each trained for 3 epochs at learning rate 2×10⁻⁵, batch size 32, and maximum sequence length 128 (sentiment) / 192 (toxicity) tokens, using AdamW (weight decay 0.01) with linear warmup over 10% of steps; sentiment fine-tuning used two configurations—an out-of-domain baseline trained on TweetEval-sentiment and an in-domain model trained on the gold training split with slang normalization [14] and class-weighted oversampling—while toxicity used Jigsaw Toxic Comment Classification. Full-corpus inference ran in fp16 batches of 128. Fine-tuning required approximately 6.9 hours and full-corpus inference approximately 1.15 hours on the RTX 3060. Detoxify (unitary/toxic-bert) [15] was applied zero-shot via its default API, with no custom fine-tuning.
+3.5 Statistical Procedures. Three families of tests were applied. Temporal trends (Section 4.3) used the non-parametric Mann–Kendall test [16] (Kendall’s τ as effect size); structural breaks at three pre-specified dates used the Chow test [17]. Contextual correlations (Section 4.4) used Spearman’s ρ, Mann–Whitney U (rank-biserial r), Kruskal–Wallis H (η²), and Pearson’s χ² with Cramér’s V, with Benjamini–Hochberg [18] adjustment at q=0.05 across the ten tests. Bootstrap 95% confidence intervals used 1,000 percentile resamples.
+4. Results and Analysis. Applying the data pipeline and statistical procedures of Section 3 to the full corpus, this section reports the empirical findings in four subsections: dataset characteristics (4.1), comparative performance of the four deep learning models (4.2), temporal trends (4.3), and contextual factor correlations (4.4). All experiments ran on a single NVIDIA RTX 3060 GPU (CUDA 12.8) using transformers v5.5.0 and PyTorch v2.8.0 under Python 3.10 with random seed 42; total runtime was approximately 8 hours.
+4.1 Dataset Characteristics. The dataset consists of in-game chat from professional Dota 2 matches obtained from the public Kaggle dataset bwandowando/dota-2-pro-league-matches-2023 [19] (accessed via the kagglehub library), covering The International, DPC Majors, DPC regional leagues, and other professional tournaments from January 2016 through April 2026. After filtering chatwheel commands and restricting to English-language messages, the corpus comprises 1,603,567 chat lines across 197,695 unique professional matches. A separate set of 274,087 non-English messages (Russian, Bulgarian, Macedonian, Filipino, Spanish, and others) is preserved for future multilingual research. Figure 1 summarizes two views of the corpus. Tournament-tier distribution is dominated by the 'other' category (1,475,880 messages, 92.04%), followed by DPC Tour (3.93%), Major (2.36%), and The International (1.67%); annual message volume grows with the professional scene, rising from roughly 102,000–120,000 in 2016–2017 to a peak near 198,000 in 2025, with the 2026 partial year (January–April) contributing 55,305 messages.
+A stratified gold-standard set of 7,971 messages (after deduplication of 31 message keys from an initial draw of 8,002) was constructed for model evaluation, sampled across years and tournament tiers. The class distribution reflects the conversational nature of competitive in-game chat: positive 4,512 (56.6%), neutral 3,357 (42.1%), negative 102 (1.3%); toxic 68 (0.85%), obscene 53 (0.66%), insult 66 (0.83%), severe_toxic 0, threat 0, identity_hate 2 (0.03%); Dota-jargon-bearing messages 4,257 (53.4%). The gold set was partitioned into 5,579 training messages (70.0%) and 2,392 test messages (30.0%) using stratified sampling by sentiment label, with zero overlap by message key.
+Figure 1. (top) annual English-chat volume, 2016–2026, peaking at 198,000 messages in 2025 (2026 covers January–April only); (down) tournament-tier distribution by share of messages, dominated by the 'other' tier at 92.04%.
+4.2 Comparative Performance of Four Deep Learning Models. Four pretrained transformer models were evaluated on the gold-test set (n=2,392). Three models—BERT-base-uncased [20], RoBERTa-base [21], and DistilBERT-base-uncased [22]—were fine-tuned on TweetEval-sentiment [23] (3-class, natively positive/neutral/negative) and Jigsaw Toxic Comment Classification [24] (multi-label) using the AdamW optimizer [25], learning rate 2×10⁻⁵, batch size 32, 3 epochs. Because the gold-test set is domain-specific MOBA chat, each sentiment model was trained in two configurations: an out-of-domain baseline fine-tuned on TweetEval-sentiment, and an in-domain model fine-tuned on the 5,579-message gold training split with slang normalization (expanding common chat abbreviations) and class-weighted oversampling to counter the neutral-class majority. TweetEval was selected over Sentiment140/SST-2 because it is natively 3-class; the Jigsaw corpus was used alone (without HateEval) as it provides the complete 6-label schema matching the study's toxicity taxonomy. Validation F1 on public benchmarks: 0.72–0.73 (F1-macro, sentiment) and 0.80 (F1-micro, toxicity); the toxicity validation F1-micro of 0.80 fell below the pre-specified acceptance threshold of 0.85, so the toxicity fine-tuning did not meet its validation gate. Bootstrap 95% CIs computed using 1,000 resamples on the gold-test set.
+Table 1. Sentiment 3-Class Classification on the Gold-Test Set (n=2,392): External-Corpus vs In-Domain Fine-Tuning
+Model
+Bal. Acc. (external)
+MCC (external)
+Bal. Acc. (in-domain)
+MCC (in-domain)
+BERT
+0.315
+−0.127
+0.784
+0.952
+RoBERTa
+0.343
+−0.088
+0.813
+0.945
+DistilBERT
+0.331
+−0.098
+0.802
+0.910
+External = fine-tuned on TweetEval-sentiment (out-of-domain) and applied to the Dota gold-test set; in-domain = fine-tuned on the 5,579-message gold training split with slang normalization and class-weighted oversampling. Balanced-accuracy chance ≈ 0.33 for three classes; MCC < 0 indicates worse-than-chance agreement. Detoxify, a toxicity model, is omitted from this sentiment comparison.
+Under the out-of-domain configuration, the three transformers fine-tuned on TweetEval collapsed on the Dota gold-test set: balanced accuracy stayed near the 0.33 three-class chance level (BERT 0.315, RoBERTa 0.343, DistilBERT 0.331) with negative MCC (−0.13 to −0.09), as each model defaulted to the dominant neutral class (F1-neutral ≈ 0.55) while positive and negative recall fell below 0.07. Re-fine-tuning the same architectures in-domain—on the gold training split, with slang normalization and class-weighted oversampling—reverses this collapse: balanced accuracy rises to 0.78–0.81 and MCC to 0.91–0.95 (Table 1), a gain of roughly +0.47 in balanced accuracy for every model, with RoBERTa best on balanced accuracy (0.813) and BERT best on MCC (0.952). The earlier failure is therefore attributable to the out-of-domain training corpus rather than to fine-tuning itself: aligning the training distribution with the target domain recovers strong sentiment performance, and the majority-class baseline (always predicting the dominant positive class; F1-macro 0.241) that exceeded the out-of-domain models no longer does so. These in-domain figures come from a CPU-based proxy run (maximum sequence length 64) scored on the gold-test set; the full-corpus inference behind the temporal and contextual analyses (Sections 4.3–4.4) still uses the out-of-domain sentiment model, so those trends are not yet re-derived from the in-domain classifier (full-corpus re-inference is left to future work).
+For the out-of-domain configuration, the RoBERTa confusion matrix makes this collapse explicit: 919 of 1,007 neutral messages are classified correctly, while only 3 of 31 negative messages are recovered. An error-rate breakdown by jargon presence shows that all three out-of-domain models incur roughly 30 percentage points higher error on jargon-bearing messages (e.g., RoBERTa 74.8% versus 44.5% on jargon-free messages)—the jargon weakness that the in-domain configuration’s slang normalization is designed to address.
+Table 2. Toxicity Multi-Label Classification Results on Gold-Test Set (n=2,392)
+Model
+F1-micro [95% CI]
+F1-macro
+MCC
+(micro)
+PR-AUC
+(macro)
+F1-toxic
+F1-insult
+BERT
+0.125 [0.020, 0.248]
+0.075
+0.123
+0.061
+0.075
+0.174
+RoBERTa
+0.141 [0.032, 0.259]
+0.077
+0.139
+0.101
+0.120
+0.080
+DistilBERT
+0.128 [0.021, 0.256]
+0.068
+0.137
+0.067
+0.108
+0.091
+Detoxify*
+0.152 [0.024, 0.294]
+0.081
+0.161
+0.058
+0.111
+0.174
+*Best model on F1-micro. F1 for severe_toxic, threat, and identity_hate is 0.000 across all models due to near-zero positive examples in gold-test set. MCC is the micro-averaged Matthews correlation and PR-AUC is macro-averaged over labels with positive support.
+Detoxify, despite being applied zero-shot, outperformed all three fine-tuned transformers on every aggregate toxicity metric (F1-micro 0.152, 95% CI [0.024, 0.294]). The wide bootstrap CI reflects the small positive class in the gold-test set (only 68 toxic-labeled examples). Imbalance-robust metrics frame these results: for toxicity, MCC is small but positive (0.12–0.16, highest for Detoxify), showing weak but genuine signal; for sentiment, the out-of-domain transformers register negative MCC (−0.13 to −0.09) from collapse onto the majority class, a collapse that in-domain fine-tuning reverses (Section 4.2).
+To separate genuine model capability from extreme class sparsity, a secondary enriched toxic-candidate probe was constructed: 242 messages stratified across 2016–2026, drawn from a pool flagged by either a Detoxify toxicity score ≥ 0.5 or an English/Indonesian profanity lexicon, with all gold-test keys excluded and each message manually labeled (toxic 97, obscene 97, insult 61; single annotator, as in the main gold set). On this denser set (Table 3), all four models reach F1-micro ≈ 0.42—well above the 0.13–0.15 obtained on the sparse population gold-test (Table 2)—indicating that the classifiers carry real discriminative signal that the 0.85% population prevalence of toxicity masks.
+Table 3. Enriched Toxic-Candidate Probe (n=242, Manually Labeled): Multi-Label Classification F1
+Model
+F1-micro
+Precision
+Recall
+F1-toxic
+F1-obscene
+F1-insult
+BERT
+0.424
+0.425
+0.422
+0.387
+0.548
+0.299
+RoBERTa
+0.416
+0.436
+0.398
+0.368
+0.536
+0.345
+DistilBERT
+0.416
+0.439
+0.395
+0.363
+0.556
+0.337
+Detoxify
+0.424
+0.392
+0.461
+0.364
+0.576
+0.370
+Enriched, non-population-representative probe: candidates flagged by a Detoxify toxicity score ≥ 0.5 or an English/Indonesian profanity lexicon, stratified across 2016–2026, with gold-test keys excluded. Label positives: toxic 97, obscene 97, insult 61; severe_toxic, threat, and identity_hate near zero. Precision and recall are micro-averaged.
+A distinct constraint is lexical coverage. On the same probe, Detoxify recovers only 0.53 of all toxic positives and 0.44 of lexicon-flagged positives; the missed cases are predominantly Indonesian or transliterated profanity (e.g., anjing, kontol, goblok, asu) outside the English-trained model’s coverage, alongside some Dota-specific English slang (e.g., noob, trash) [14]. The toxicity bottleneck is therefore jointly extreme sparsity and limited lexical coverage—not thresholding or architecture—motivating multilingual encoders (IndoBERT, XLM-R) and a domain- and Indonesian-aware toxic-term resource.
+4.3 Temporal Trends of Sentiment and Toxicity (2016–2026). Temporal and correlation analyses operate on the 1,380,867-message subset carrying complete model inference scores and match metadata (a subset of the 1,603,567-message corpus). Monthly aggregates were computed across 124 months (January 2016 – April 2026) for four time-series metrics: mean sentiment score, percentage of negative messages, percentage of toxic messages (any label), and mean toxicity score. For each message, the sentiment score s and the toxicity score t are defined as:
+(1)
+(2)
+where P(positive) and P(negative) are the model’s predicted class probabilities and L = {toxic, severe_toxic, obscene, threat, insult, identity_hate} is the set of six Jigsaw toxicity labels; the monthly mean sentiment score and mean toxicity score are the means of s and t, respectively, over all messages in each month.
+Figure 2. Monthly mean sentiment score (P(positive) − P(negative)), 2016–2026. Sustained downward drift across the decade; localized dips around late-2019/early-2020 and generalized decline in post-DPC era (2023–2026).
+Table 4. Mann–Kendall Trend Test on Monthly Time Series (124 months)
+Series
+τ (Kendall)
+z-score
+p-value
+Direction
+mean_sentiment_score
+−0.579
+−9.531
+<10⁻¹⁶
+Decreasing
+pct_negative
+−0.222
+−3.648
+2.6×10⁻⁴
+Decreasing
+pct_toxic_any
+−0.495
+−8.145
+<10⁻¹⁵
+Decreasing
+mean_toxicity_score
++0.324
++5.337
+9.5×10⁻⁸
+Increasing
+Table 5. Chow Structural Break Test F-statistics and p-values at Three Candidate Breakpoints
+Series
+Pandemic
+2020-03
+Post-DPC
+2023-01
+Patch 7.33
+2023-04
+mean_sentiment_score
+F=3.88, p=0.023*
+F=0.35, p=0.71
+F=0.34, p=0.72
+pct_negative
+F=4.12, p=0.019*
+F=5.30, p=0.006*
+F=4.50, p=0.013*
+pct_toxic_any
+F=14.75, p=1.9×10⁻⁶*
+F=0.62, p=0.54
+F=0.24, p=0.79
+mean_toxicity_score
+F=13.33, p=5.9×10⁻⁶*
+F=0.42, p=0.66
+F=0.59, p=0.55
+* Significant at α=0.05.
+The pandemic onset (March 2020) is the most consistent structural breakpoint, producing significant breaks in all four metrics. The post-DPC transition and patch 7.33 produced significant breaks only in pct_negative, indicating that meta and structural changes alone influenced negativity but not the broader sentiment-toxicity surface. The juxtaposition of declining toxic frequency (τ=−0.50) with increasing toxicity severity (τ=+0.32) is consistent with an intensification dynamic—toxic communication has become rarer but more extreme over the decade—possibly reflecting Valve's communication-ban regime filtering low-severity infractions while leaving high-severity outbursts.
+4.4 Contextual Factor Correlations. Ten correlation tests were conducted between five contextual factors and two dependent variables (sentiment label, max-toxicity probability). Tests were selected by data type: Spearman's ρ for ordinal × continuous, Mann–Whitney U for binary × continuous, Kruskal–Wallis H for multi-class × continuous, and Pearson's χ² with Cramér's V for categorical × categorical. P-values were adjusted using the Benjamini–Hochberg procedure at q=0.05.
+Table 6. Contextual Correlation Tests with Benjamini–Hochberg FDR Correction (q=0.05)
+Feature
+Outcome
+Test
+Statistic
+p (BH-adj)
+Effect Size
+match_outcome
+sentiment
+χ²
+341.6
+<10⁻⁷⁴
+V=0.016
+match_outcome*
+max_toxicity
+Mann–Whitney
+U=2.15×10¹¹
+<10⁻³⁰⁰
+r=0.060
+duration
+sentiment_score
+Spearman
+ρ=−0.055
+<10⁻³⁰⁰
+ρ=−0.055
+duration*
+max_toxicity
+Spearman
+ρ=−0.080
+<10⁻³⁰⁰
+ρ=−0.080
+tier
+max_toxicity
+Kruskal–Wallis
+H=887.4
+<10⁻¹⁹¹
+η²=0.001
+tier
+sentiment
+χ²
+65.3
+<10⁻¹¹
+V=0.005
+phase
+max_toxicity
+Kruskal–Wallis
+H=40.4
+<10⁻⁸
+η²<0.001
+phase
+sentiment
+χ²
+28.5
+<10⁻⁵
+V=0.003
+period
+max_toxicity
+Kruskal–Wallis
+H=14672.6
+<10⁻³⁰⁰
+η²=0.011
+period*
+sentiment
+χ²
+4295.4
+<10⁻³⁰⁰
+V=0.039
+*Largest effect sizes. The Mann–Whitney U (full corpus, n=1,355,212 for match outcome) is reported with rank-biserial r as the interpretable effect size.
+Per-match-level robustness check (n=197,695 unique matches) strengthens the duration finding (Spearman ρ=−0.147, p<10⁻³⁰⁰) but eliminates the tier × toxicity association (Kruskal–Wallis H=1.76, p=0.62). The original message-level tier effect was therefore largely an artifact of clustering; tier-level claims are downgraded to exploratory.
+5. Discussion and Conclusions. Section 4 carries implications for three audiences.
+From the perspective of platform moderation, the most actionable result is that Detoxify, used zero-shot, outperformed all three fine-tuned transformers on aggregate toxicity metrics; on three-class sentiment the picture is configuration-dependent: transformers fine-tuned on out-of-domain Twitter data collapse to negative MCC, but re-fine-tuning the same architectures in-domain restores strong agreement. The lesson is not that fine-tuning fails but that aligning the training corpus with the target domain is decisive—in-domain fine-tuning clearly outperforms both the out-of-domain transformers and zero-shot transfer for sentiment. Combined with the contextual finding that match duration is the strongest correlate of toxicity (Spearman ρ=−0.080 at message level, −0.147 at match level), a practical moderation policy would prioritize automated review of (a) early-stomp matches under 30 minutes and (b) the chat of teams trailing in gold or kill-deficit, since the loser-bias effect (Mann–Whitney r=0.060) operationalizes on the losing side. Domain-specific jargon (present in 53.4% of messages) also systematically degrades fine-tuned model performance; jargon-error analysis shows all three fine-tuned models incur a ~30 pp higher error rate on jargon-bearing messages.
+For esports organizers, the monotonic decline in mean sentiment (Mann–Kendall τ=−0.58) and the post-DPC break in pct_negative are notable: the shift from the structured DPC system to the present circuit format (post-2023) coincides with lower sportsmanship indicators, consistent with—though not proving—a link between formal-league structure and healthier communication norms.
+Three methodological choices further bound these findings: all models used a single random seed (42), so the overlapping inter-model differences lack an initialization-variance estimate and the ‘best’ fine-tuned model is indicative only; no class-imbalance mitigation was applied for toxicity or in the out-of-domain sentiment baseline (standard cross-entropy loss), which partly explains the zero F1 on rare toxicity labels and the out-of-domain neutral-class collapse (the in-domain sentiment model instead used class-weighted oversampling); and hyperparameters were fixed to common defaults across all architectures without per-model tuning. Multi-seed reporting, imbalance-aware training, and architecture-specific tuning are left to future work.
+The principal limitations—single-annotator manual labeling (construct validity), the reliance of the temporal and contextual analyses on out-of-domain sentiment inference pending full-corpus re-inference with the in-domain model, small practical effect sizes despite statistical significance (n≈1.4M), and the exclusion of 274,087 non-English messages—are disclosed in Section 3.3 and Section 4.2 and should bound interpretations accordingly.
+In summary, in-domain fine-tuning recovers strong three-class sentiment performance where out-of-domain Twitter training collapses to worse-than-chance, while Detoxify (zero-shot) leads on toxicity; the decade exhibits declining sentiment and a toxicity intensification pattern (falling frequency, rising severity) with the COVID-19 onset as the strongest structural break; and all ten contextual correlations are significant but practically small, led by match duration, outcome, and time period.
+Future work should target multi-rater annotation (to address the IAA limitation), full-corpus re-inference with the in-domain sentiment model so that the temporal and contextual analyses inherit its gains, multilingual extension to Russian and other community languages, and per-player longitudinal analysis to test the toxicity-intensification hypothesis.
+Data Availability Statement. The data are publicly available on Kaggle at https://www.kaggle.com/datasets/bwandowando/dota-2-pro-league-matches-2023, and the full analysis code and pipeline are available on GitHub at https://github.com/yechika/Pre-Thesis.
+CRediT Author Statement. Daniel Dirgantara: Writing – original draft, Methodology, Software. Muhammad Dhitan Imam Sakti: Data curation, Formal analysis, Writing – review & editing. Aldiaz Kusuma Ramadhan: Visualization, Writing – review & editing. Eko Setyo Purwanto: Conceptualization, Review, Supervision, Validation.
+Acknowledgment. The authors thank the maintainer of the bwandowando Kaggle Dota 2 professional matches dataset and the OpenDota project for providing free public access to professional Dota 2 match data, and the Bina Nusantara University for funding this study. The authors also thank the reviewers for their helpful comments and suggestions.
+REFERENCES
+[1] M. Mora-Cantallops and M.-Á. Sicilia, MOBA games: A literature review, Entertainment Computing, vol.26, pp.128-138, 2018.
+[2] Esports Earnings, Largest Prize Pools for Dota 2, https://www.esportsearnings.com/, accessed April 14, 2026.
+[3] V. Lipovaya, Y. Lima, P. Grillo, C. Barbosa, J. Souza and F. Duarte, Coordination, communication, and competition in eSports: A comparative analysis of teams in two action games, Proc. of the 16th European Conference on Computer-Supported Cooperative Work (ECSCW 2018), 2018.
+[4] Y. Son and E. Park, Voice to victory: Modeling in-game voice communication for team coordination in MOBA games, Adjunct Proc. of the 38th Annual ACM Symposium on User Interface Software and Technology (UIST '25), 2025.
+[5] M. M. Rezapour, A. Fatemi and M. A. Nematbakhsh, Learning experience assessment through players’ chat content in multiplayer online games, Computers in Human Behavior, vol.151, art. no. 108003, 2024.
+[6] A. Khairunisa, Computer-mediated communication: Online gaming communication culture, Proc. of the 2nd Jogjakarta Communication Conference (JCC 2020), 2020.
+[7] L. Hatem, A. Omar, A. Ali and H. Farghaly, Tackling toxicity in Arabic social media through advanced detection techniques, Scientific Reports, vol.15, 2025.
+[8] L. Knežević, J. Topalov and S. Halupka-Rešetar, Students’ disinhibition in online communication and the implications for foreign language pedagogy, Zbornik Radova Filozofskog Fakulteta u Prištini, 2022.
+[9] L. Ng, A. Lim and M. Yoder, Modes of toxic behavior and game design considerations in online multiplayer games, First Monday, vol.30, no.6, 2025.
+[10] G. Akash, H. Kumar and D. Bharathi, Toxic comment classification using transformers, Proc. of the 11th Annual International Conference on Industrial Engineering and Operations Management, Singapore, 2021.
+[11] S. Dhekale, S. Nikam and D. Shedge, Comparative study of pre-trained and traditionally trained models for text based sentiment analysis, International Journal of Applied Mathematics, vol.38, no.3S, 2025.
+[12] B. Mustofa, W. Laksito and Y. Saptomo, Use of natural language processing in social media text analysis, Journal of Artificial Intelligence and Engineering Applications (JAIEA), vol.4, no.2, 2025.
+[13] M. Á. López-Cabarcos, D. Ribeiro-Soriano and J. Piñeiro-Chousa, All that glitters is not gold: The rise of gaming in the COVID-19 pandemic, Journal of Innovation & Knowledge, vol.5, no.4, pp.289-296, 2020.
+[14] The Big Dota 2 Dictionary [Online guide], Steam Community, https://steamcommunity.com/sharedfiles/filedetails/?id=172122376, 2013, updated 2016, accessed June 10, 2026.
+[15] L. Hanu and Unitary Team, Detoxify, https://github.com/unitaryai/detoxify, 2020.
+[16] F. Wang, W. Shao, H. Yu et al., Re-evaluation of the power of the Mann-Kendall test for detecting monotonic trends in hydrometeorological time series, Frontiers in Earth Science, vol.8, art. no. 14, 2020.
+[17] H. Luitel and G. J. Mahar, A short note on the application of Chow test of structural break in US GDP, International Business Research, vol.8, no.10, p.112, 2015.
+[18] Y. Benjamini and Y. Hochberg, Controlling the false discovery rate: A practical and powerful approach to multiple testing, Journal of the Royal Statistical Society: Series B (Methodological), vol.57, no.1, pp.289-300, 1995.
+[19] bwandowando, Dota 2 Pro League Matches 2016–2026 [Data set], Kaggle, https://www.kaggle.com/datasets/bwandowando/dota-2-pro-league-matches-2023, 2026.
+[20] J. Devlin, M.-W. Chang, K. Lee and K. Toutanova, BERT: Pre-training of deep bidirectional transformers for language understanding, Proc. of the 2019 Conference of the NAACL-HLT, pp.4171-4186, 2019.
+[21] Y. Liu, M. Ott, N. Goyal, J. Du, M. Joshi, D. Chen, O. Levy, M. Lewis, L. Zettlemoyer and V. Stoyanov, RoBERTa: A robustly optimized BERT pretraining approach, arXiv:1907.11692, 2019.
+[22] V. Sanh, L. Debut, J. Chaumond and T. Wolf, DistilBERT, a distilled version of BERT: Smaller, faster, cheaper and lighter, arXiv:1910.01108, 2019.
+[23] F. Barbieri, J. Camacho-Collados, L. Neves and L. Espinosa-Anke, TweetEval: Unified benchmark and comparative evaluation for tweet classification, arXiv:2010.12421, 2020.
+[24] T. Wang, Toxic-Comment-Classification-Challenge [Source code], GitHub, https://github.com/tianqwang/Toxic-Comment-Classification-Challenge, 2018.
+[25] I. Loshchilov and F. Hutter, Decoupled weight decay regularization, arXiv:1711.05101, 2017.

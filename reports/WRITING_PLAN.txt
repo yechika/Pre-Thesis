@@ -29,7 +29,7 @@ ACTION:
      - Pertandingan profesional: 197.695 unique
      - Folder data: 14 (2016-2025 + 4 kuartal 2026)
      - Non-EN dieksklusi: 274.087 baris (~14.6%)
-3. Tambah disclosure di 1.5 Batasan: mode anotasi single-annotator AI (Pilihan B).
+3. Tambah di 1.5 Batasan: reliabilitas anotasi diukur pada subset 300 unit (3 anotator).
 
 
 
@@ -116,23 +116,14 @@ SECTION:
     - Plus markers: is_dota_jargon, is_ambiguous, notes
     - Aturan disambiguasi: sarcasm, jargon Dota, ambigu, pesan singkat
 
-3.5 Mode Anotasi (CRITICAL DISCLOSURE) ★★★ WAJIB DISEBUT ★★★
-    - Pilihan B: Single-Annotator AI (Claude opus-4-7)
-    - Anotasi 8.000 sample dengan kombinasi rule-based matching + LLM reasoning
-    - Pasca-dedup: 7.971 baris unique
-    - LIMITASI METODOLOGI:
-        * Cohen's kappa pair-wise TIDAK dihitung (butuh ≥2 rater)
-        * Krippendorff's alpha multi-label TIDAK dihitung
-        * Reliability bergantung konsistensi 1 anotator AI
-        * Bias risk: model evaluasi (BERT/RoBERTa/DistilBERT) bisa share bias
-          representasi dengan Claude → F1 over-optimistic
-    - MITIGASI:
-        * 38% sample (3.064 baris) flag is_ambiguous=1 untuk audit
-        * Subgroup analysis di notebook 06 dengan/tanpa ambiguous
-    - REKOMENDASI MASA DEPAN:
-        * Migrasi ke Pilihan A: 3 anotator manusia + AI = 4-rater study
-        * Threshold publikasi: kappa pair-wise AI-vs-human ≥ 0.6 sentimen
-    - REFERENCE FILE: data/gold/agreement_report.md, data/gold/TOOLING_DECISION.md
+3.5 Protokol Anotasi Manual
+    - 3 anotator (Daniel, Dhitan, Aldiaz), independen & blind, mengikuti ANNOTATION_GUIDELINE.md
+    - 8.121 pesan dikelompokkan jadi 2.441 unit (teks × status akhir match × hasil tim); label unit
+      berlaku untuk semua kemunculannya
+    - 300 unit dilabel ketiganya: Fleiss' kappa sentimen 0.773, toxic 0.792
+      (Cohen's kappa pasangan 0.744–0.806 / 0.679–0.880); konsensus majority vote
+    - is_ambiguous: 3.5% pesan; statistik utama dicek ulang tanpa baris ambigu
+    - REFERENCE FILE: data/gold/manual_relabel/agreement.json, scripts/merge_manual_relabel.py
 
 3.6 Stratified Sampling Gold-Standard
     Source: openspec/specs/gold-standard-annotation/spec.md
@@ -339,9 +330,9 @@ CRITICAL DISCLOSURE CHECKLIST
 
 ★ WAJIB cantumkan di metodologi + limitasi (BAB III + BAB IV §4.5):
 
-[1] Single-annotator AI mode (Pilihan B)
+[1] Reliabilitas anotasi manual (Fleiss' kappa pada 300 unit)
     Lokasi: BAB III §3.5 + BAB IV §4.5.2
-    Reference: data/gold/agreement_report.md
+    Reference: data/gold/manual_relabel/agreement.json
 
 [2] Validation-test gap F1 0.73 → 0.22 = drop 0.51 poin
     Lokasi: BAB IV §4.5.2

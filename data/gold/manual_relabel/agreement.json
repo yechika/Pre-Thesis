@@ -1,0 +1,53 @@
+{
+  "n_units_overlap": 300,
+  "sentiment": {
+    "fleiss_kappa": 0.773,
+    "pairwise_cohen": {
+      "daniel-dhitan": 0.744,
+      "daniel-aldiaz": 0.768,
+      "dhitan-aldiaz": 0.806
+    }
+  },
+  "toxic": {
+    "fleiss_kappa": 0.792,
+    "pairwise_cohen": {
+      "daniel-dhitan": 0.679,
+      "daniel-aldiaz": 0.808,
+      "dhitan-aldiaz": 0.88
+    }
+  },
+  "obscene": {
+    "fleiss_kappa": 0.838,
+    "pairwise_cohen": {
+      "daniel-dhitan": 0.753,
+      "daniel-aldiaz": 0.793,
+      "dhitan-aldiaz": 0.955
+    }
+  },
+  "insult": {
+    "fleiss_kappa": 0.884,
+    "pairwise_cohen": {
+      "daniel-dhitan": 0.864,
+      "daniel-aldiaz": 0.92,
+      "dhitan-aldiaz": 0.864
+    }
+  },
+  "n_messages": 8121,
+  "n_units": 2441,
+  "n_sentiment_ties": 2,
+  "pct_ambiguous_messages": 3.5,
+  "sentiment_counts": {
+    "positive": 4449,
+    "neutral": 3355,
+    "negative": 317
+  },
+  "toxicity_counts": {
+    "toxic": 174,
+    "severe_toxic": 5,
+    "obscene": 84,
+    "threat": 3,
+    "insult": 97,
+    "identity_hate": 9
+  },
+  "jargon_messages": 164
+}

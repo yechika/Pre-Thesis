@@ -1,0 +1,151 @@
+match_id,time,player_slot,key,year,tier,match_outcome_for_player,duration,sentiment,tox_toxic,tox_severe_toxic,tox_obscene,tox_threat,tox_insult,tox_identity_hate,is_dota_jargon,is_ambiguous,notes
+5827671821,2168.0,131.0,Ez banget,2021,Lainnya,win,2379,negative,1,0,0,0,0,0,0,0,
+4236877387,-696.0,128.0,KONTOL NI YXX,2018,Lainnya,win,1800,negative,1,0,1,0,1,0,0,0,
+7582147833,-69.0,1.0,Ty  we need all the luck we can get,2024,Lainnya,win,1793,positive,0,0,0,0,0,0,0,0,
+3813288345,55.0,2.0,report ladinn,2018,Lainnya,win,3096,neutral,0,0,0,0,0,0,0,0,
+4857554483,-850.0,131.0,ez baserace,2019,Lainnya,loss,2860,negative,1,0,0,0,0,0,0,0,
+3875523276,2277.0,2.0,trash talk goes fast to flame,2018,Lainnya,loss,2590,neutral,0,0,0,0,0,0,0,0,"komentar tentang trash talk, bukan toksik"
+4496137325,-72.0,131.0,lu butuh report id steam nya mezpan ?,2019,Lainnya,loss,3036,neutral,0,0,0,0,0,0,0,0,
+3991902394,1215.0,,Pause time is over DD,2018,Lainnya,unknown,3213,neutral,0,0,0,0,0,0,0,0,
+7916102659,-73.0,3.0,haha ez game,2024,Lainnya,loss,2114,negative,1,0,0,0,0,0,0,0,
+2501818150,54.0,3.0,afk,2016,Lainnya,loss,1399,neutral,0,0,0,0,0,0,0,0,
+4130725463,-67.0,130.0,thanks nutz,2018,Lainnya,loss,2036,positive,0,0,0,0,0,0,0,0,
+4828900412,-479.0,131.0,brisik lo fer anjing,2019,Lainnya,win,2257,negative,1,0,1,0,1,0,0,1,"""brisik lo ... anjing"""
+4789262632,459.0,130.0,Fuck u,2019,Lainnya,loss,1935,negative,1,0,1,0,1,0,0,1,"terdeteksi otomatis, cek konteks"
+4496137325,-473.0,131.0,maen supoort ae bego dit dia gk guna anjeng,2019,Lainnya,loss,3036,negative,1,0,1,0,1,0,0,0,
+4873226548,2749.0,1.0,LU BIKIN NGELEG PC GUA ANJING,2019,Lainnya,win,3420,negative,1,0,1,0,1,0,0,0,"terdeteksi otomatis, cek konteks"
+7566741044,1546.0,130.0,hoRy SHIt,2024,Lainnya,loss,2562,negative,1,0,1,0,0,0,0,0,
+6460671503,-75.0,2.0,gl hf,2022,Lainnya,win,3140,positive,0,0,0,0,0,0,0,0,"""gl hf"" + karakter PUA"
+4712773929,1992.0,2.0,jgn end plz,2019,Lainnya,loss,2142,neutral,0,0,0,0,0,0,0,0,
+2924097933,2149.0,129.0,davys a retard,2017,Lainnya,win,2885,negative,1,0,0,0,1,0,0,0,
+5097735860,354.0,129.0,not gonna wait,2019,Lainnya,loss,1581,negative,0,0,0,0,0,0,0,0,
+4705457560,1519.0,128.0,KONTOL MEKSMUN,2019,Lainnya,win,2072,negative,1,0,1,0,1,0,0,1,"umpatan ""kontol"" ke pemain"
+8130859860,-471.0,3.0,go ursa mid free win,2025,Lainnya,win,2637,neutral,0,0,0,0,0,0,1,0,hero Ursa + mid; bercanda
+4345380901,1696.0,,bengong cok,2019,Lainnya,unknown,2638,negative,1,0,1,0,0,0,0,0,"""cok"" umpatan ringan"
+5702357924,702.0,132.0,anjeng pause pause terus kawan gua,2020,Lainnya,loss,1511,negative,1,0,1,0,0,0,0,1,"""anjeng"" mengeluh soal pause"
+3047493774,-83.0,0.0,wait sry his pc problem,2017,Major,loss,2458,neutral,0,0,0,0,0,0,0,0,
+4252237421,-126.0,131.0,"sorry, we pause in game",2018,Lainnya,loss,2087,neutral,0,0,0,0,0,0,0,0,
+3648554854,7.0,3.0,GLHF BRAYANT,2017,Lainnya,loss,1643,positive,0,0,0,0,0,0,0,0,
+2145169626,1481.0,128.0,dont unpause jeyo brb,2016,Lainnya,win,1975,neutral,0,0,0,0,0,0,0,0,
+3017318019,-75.0,131.0,dickos shed for all your gaming needs,2017,Lainnya,loss,1616,neutral,0,0,0,0,0,0,0,1,"lelucon ""dick"" (spam/iklan humor); tidak jelas toksik atau tidak | Lelucon/plesetan nama | kemungkinan iklan bercanda; ""dickos"" bisa nama, bukan cabul"
+4293022700,-648.0,131.0,bikin gw sange dick,2018,Lainnya,loss,1486,negative,1,0,1,0,0,0,0,0,konten seksual vulgar
+4145385527,-435.0,4.0,GOBLOK WKOWKOWK,2018,Lainnya,win,2783,negative,1,0,0,0,1,0,0,0,"""goblok"" + tertawa"
+4264283785,-181.0,1.0,L goblok,2018,Lainnya,win,2352,negative,1,0,0,0,1,0,0,0,
+6385505087,3278.0,1.0,no def end mi,2022,Lainnya,win,3392,neutral,0,0,0,0,0,0,0,0,
+5027548420,1933.0,0.0,ama temen sendiri cok,2019,Lainnya,win,2360,negative,0,0,0,0,0,0,0,1,"""cok"" kemungkinan akrab/bercanda; arti tidak jelas"
+5670720408,-61.0,3.0,glHF idiot,2020,Lainnya,loss,801,negative,1,0,0,0,1,0,0,1,Campuran salam baik + 'idiot'; mungkin bercanda
+3318978113,-87.0,,can AEF sponsor a 1v1 solo mid visage off between boonz and fish?,2017,Lainnya,unknown,1649,neutral,0,0,0,0,0,0,0,0,
+5096047179,621.0,2.0,draft i shit,2019,Lainnya,loss,751,negative,0,0,0,0,0,0,0,0,"""draft i shit"""
+2855118796,2571.0,129.0,artinya timber tolol,2016,Lainnya,loss,2615,negative,1,0,0,0,1,0,0,0,
+4596580193,1271.0,2.0,db anjing,2019,Lainnya,loss,1899,negative,1,0,1,0,1,0,0,1,"""db anjing"" (db=disconnect/DB?)"
+6003989473,2266.0,1.0,gg noobs,2021,Lainnya,win,2263,negative,1,0,0,0,1,0,0,0,
+5684696127,-88.0,2.0,G anthony,2020,Lainnya,win,2037,neutral,0,0,0,0,0,0,0,0,
+6729403387,-150.0,129.0,ez 100 s sebeka,2022,Lainnya,loss,1918,negative,1,0,0,0,0,0,0,0,
+7229499660,-87.0,128.0,ppl afk,2023,Lainnya,win,2544,neutral,0,0,0,0,0,0,0,0,
+4750949908,1290.0,131.0,serah dia cok,2019,Lainnya,win,1300,negative,1,0,1,0,1,0,0,0,"""cok"" ke pemain"
+4178241325,-272.0,128.0,OWKOWKOWKOW ASU,2018,Lainnya,loss,2256,negative,1,0,1,0,1,0,0,1,"""asu"" + tertawa; bisa bercanda"
+6077608663,-79.0,128.0,its ok gonna end before 7,2021,Lainnya,loss,1804,neutral,0,0,0,0,0,0,0,0,
+2622991274,-90.0,0.0,G?=,2016,Lainnya,loss,2844,neutral,0,0,0,0,0,0,0,0,
+6538127863,1426.0,4.0,gue g lgi di sana sih,2022,Lainnya,loss,1583,neutral,0,0,0,0,0,0,0,0,
+7570177930,2352.0,0.0,ez chompa,2024,Lainnya,win,2388,negative,0,0,0,0,0,0,0,1,"""ez"" bisa ejekan atau bercanda; tergantung konteks"
+3306635873,-61.0,,gl hf all,2017,Lainnya,unknown,1971,positive,0,0,0,0,0,0,0,0,
+3037185451,3674.0,3.0,TY :>,2017,Lainnya,win,3664,positive,0,0,0,0,0,0,0,0,
+5025025449,4563.0,1.0,gg wp :D,2019,Lainnya,win,4568,positive,0,0,0,0,0,0,0,0,
+7641713286,421.0,4.0,Afk 2 mins,2024,Lainnya,win,1747,neutral,0,0,0,0,0,0,0,0,
+4153462200,-540.0,,rusah semua anjing,2018,Lainnya,unknown,1807,negative,1,0,1,0,0,0,0,0,
+5058075836,1810.0,129.0,ok  g 4v5,2019,Major,loss,1927,neutral,0,0,0,0,0,0,0,0,
+2622506703,763.0,129.0,report bambino,2016,Lainnya,loss,766,negative,0,0,0,0,0,0,0,0,
+4217923738,611.0,1.0,udah cuk,2018,Lainnya,win,3147,neutral,0,0,0,0,0,0,0,0,
+7261233484,-88.0,2.0,you are gay,2023,Lainnya,loss,2086,negative,1,0,0,0,1,1,0,0,"""gay"" dipakai sebagai hinaan"
+5826852258,-82.0,0.0,gl hf noobgod,2021,Lainnya,win,3354,positive,0,0,0,0,0,0,0,1,"'noobgod' mungkin julukan bercanda | ""noobgod"" bisa ejekan atau pujian bercanda"
+8233035313,1972.0,129.0,ez lifer,2025,Lainnya,loss,1968,negative,0,0,0,0,0,0,0,1,"""ez"" bisa ejekan atau bercanda; tergantung konteks"
+2268058627,-88.0,1.0,rdy go ?,2016,Lainnya,loss,2153,neutral,0,0,0,0,0,0,0,0,
+4826406781,2479.0,4.0,dio pakein golem cok,2019,Lainnya,loss,3150,neutral,0,0,0,0,0,0,0,0,
+2476997491,-41.0,2.0,WKAWKAK KASAR LO ANJING,2016,Lainnya,loss,2069,negative,1,0,1,0,0,0,0,1,Tertawa sambil memaki; mungkin bercanda
+4157530240,-31.0,132.0,bugil anjing,2018,Lainnya,loss,2800,negative,1,0,1,0,0,0,0,0,
+8092895109,-68.0,3.0,GL HF GUYZ!,2024,Lainnya,win,2371,positive,0,0,0,0,0,0,0,0,
+3876700964,1028.0,1.0,his dick = big?,2018,Lainnya,win,2668,neutral,0,0,1,0,0,0,0,1,Konteks tidak jelas
+6592018216,-76.0,128.0,glhf bek,2022,Lainnya,win,2583,positive,0,0,0,0,0,0,0,0,
+3126514246,-22.0,129.0,gl hf bros!,2017,Lainnya,loss,2405,positive,0,0,0,0,0,0,0,0,
+8038253396,834.0,2.0,were getting fucked,2024,Lainnya,loss,1434,negative,0,0,1,0,0,0,0,0,
+2124308220,2476.0,132.0,gg wp everyone,2016,Lainnya,win,2468,positive,0,0,0,0,0,0,0,0,
+2097327317,11.0,0.0,g thanks,2016,Lainnya,win,1469,positive,0,0,0,0,0,0,0,0,
+4345380901,197.0,128.0,la dick,2019,Lainnya,loss,2638,neutral,0,0,1,0,0,0,0,1,Konteks tidak jelas
+7179637864,4287.0,4.0,we afk go end,2023,Lainnya,loss,4963,negative,0,0,0,0,0,0,0,0,
+4178654898,-39.0,0.0,Glhf),2018,Lainnya,loss,1852,positive,0,0,0,0,0,0,0,0,
+2510199719,-83.0,132.0,they say this is easy game,2016,Lainnya,win,2749,neutral,0,0,0,0,0,0,0,1,"""they say this is easy game"""
+5108312494,525.0,1.0,report void to admins guys,2019,Lainnya,win,650,neutral,0,0,0,0,0,0,0,0,
+8005380104,1597.0,129.0,Go zxc clown?,2024,Lainnya,loss,1910,negative,1,0,0,0,1,0,0,0,
+4756561654,1084.0,,STFU YOU GAY,2019,Lainnya,unknown,2659,negative,1,1,1,0,1,1,0,0,
+4858049215,-599.0,128.0,game goblok,2019,Lainnya,win,2986,negative,1,0,0,0,0,0,0,0,
+5541162908,-85.0,131.0,"ok, ty",2020,Lainnya,win,2963,positive,0,0,0,0,0,0,0,0,
+5962633751,-89.0,2.0,gl hf guys <3,2021,Lainnya,win,1874,positive,0,0,0,0,0,0,0,0,
+4299220928,1940.0,3.0,DICKY NGILANG CO,2018,Lainnya,loss,2098,neutral,0,0,0,0,0,0,0,0,
+5097812274,1435.0,129.0,i think you're a piece of shit for muting everyone on ur team,2019,Lainnya,win,1463,negative,1,0,1,0,1,0,0,0,
+4162203058,3091.0,4.0,easy katanya,2018,Lainnya,win,3590,neutral,0,0,0,0,0,0,0,1,"""easy katanya"" - sarkasme? "
+8150673606,607.0,130.0,clock afk,2025,Lainnya,loss,2290,neutral,0,0,0,0,0,0,0,0,
+5312333934,2925.0,129.0,u retard,2020,Lainnya,loss,3100,negative,1,0,0,0,1,0,0,0,
+7252522186,-83.0,0.0,gl hf paciki,2023,Lainnya,win,2169,positive,0,0,0,0,0,0,0,0,
+4903529217,-634.0,132.0,host babi,2019,Lainnya,win,3175,negative,1,0,0,0,1,0,0,0,
+4231367679,-72.0,2.0,dicky ae rampage morp,2018,Lainnya,loss,2156,neutral,0,0,0,0,0,0,0,1,makna tidak jelas
+8628727308,-131.0,132.0,for easy game,2025,Lainnya,win,1448,neutral,0,0,0,0,0,0,0,0,
+6855895269,-80.0,130.0,no gl hf tho,2022,Lainnya,loss,2640,negative,0,0,0,0,0,0,0,0,
+3571644259,2142.0,132.0,Itd be a shame for you not to get top 16 again at TI,2017,Lainnya,win,2223,negative,0,0,0,0,0,0,0,1,sarkasme/provokasi tentang TI
+2338897623,-21.0,2.0,brax afk a sec,2016,Lainnya,loss,3244,neutral,0,0,0,0,0,0,0,0,
+5781023284,552.0,4.0,zx tychka c pause,2021,Lainnya,loss,610,neutral,0,0,0,0,0,0,0,1,"Rusia translit; ""pause"" disebut"
+4941092242,-79.0,130.0,go papi,2019,Lainnya,loss,1249,neutral,0,0,0,0,0,0,0,0,
+4358876784,-60.0,130.0,ez ka lang po si,2019,Lainnya,loss,1683,negative,1,0,0,0,0,0,0,0,"Tagalog ""ez ka lang po si..."" tidak jelas"
+4848668806,3026.0,,tetep ae goblok,2019,Lainnya,unknown,3238,negative,1,0,0,0,1,0,0,0,
+4786475481,1689.0,130.0,ide kntl emng baros,2019,Lainnya,loss,2638,negative,1,0,1,0,1,0,0,1,"""kntl"" ke pemain"
+2280655665,1551.0,131.0,ya we're sorry thx,2016,Lainnya,loss,5121,neutral,0,0,0,0,0,0,0,0,
+7545586747,382.0,,need to wait 10 minutes,2024,Lainnya,unknown,1180,neutral,0,0,0,0,0,0,0,0,
+4132914114,1132.0,3.0,kntl emng shamn,2018,Lainnya,win,1450,negative,1,0,1,0,1,0,0,1,"umpatan Indonesia (""kntl"") ke pemain"
+4272100962,1010.0,128.0,gg anj,2018,Lainnya,loss,1020,negative,1,0,1,0,0,0,0,0,"""gg anj"" bisa akrab/bercanda atau hinaan | ""anj"" = anjing"
+6283446939,-83.0,132.0,still gay?,2021,Lainnya,loss,1933,negative,1,0,0,0,1,1,0,1,"""gay"" sebagai hinaan; konteks tidak pasti"
+7723923401,1755.0,131.0,-easy,2024,Lainnya,win,2054,negative,1,0,0,0,0,0,0,0,
+3176983924,34.0,4.0,el pause max es 15,2017,Lainnya,loss,3582,neutral,0,0,0,0,0,0,0,0,
+2508585061,63.0,4.0,emang 1 k bego,2016,Lainnya,loss,2295,negative,1,0,0,0,1,0,0,0,"""emang 1 k bego"""
+2865109136,-59.0,1.0,=I thx,2016,Lainnya,win,1545,neutral,0,0,0,0,0,0,0,1,pesan kosong (NaN)
+6725770656,-85.0,2.0,gl hf NASH,2022,Lainnya,win,2715,positive,0,0,0,0,0,0,0,0,
+4817760804,2795.0,1.0,cok gue bb mulu anjg item gni2 aja,2019,Lainnya,loss,3764,negative,1,0,1,0,0,0,0,0,
+7196181394,19.0,,"Perspective, your coach needs to leave VC or this will be an immediate FF",2023,Lainnya,unknown,3830,negative,0,0,0,0,0,0,0,0,
+3597231102,-68.0,128.0,fuck rajjix,2017,Lainnya,win,2872,negative,1,0,1,0,1,0,0,1,"terdeteksi otomatis, cek konteks"
+5115581398,1549.0,4.0,chekay ward moi,2019,Major,win,1547,neutral,0,0,0,0,0,0,0,0,
+4768512555,-411.0,2.0,noob vz,2019,Lainnya,loss,2028,negative,1,0,0,0,1,0,0,0,"""noob"" ke pemain"
+4360922638,3589.0,132.0,Gwr sry ty,2019,Lainnya,loss,3720,positive,0,0,0,0,0,0,0,0,
+3562994282,2258.0,128.0,retard slardar,2017,Lainnya,win,2525,negative,1,0,0,0,1,0,0,0,
+7357266428,1127.0,3.0,unpause pls),2023,Lainnya,win,2838,neutral,0,0,0,0,0,0,0,0,
+7231594728,48.0,130.0,ez range,2023,Lainnya,win,1919,negative,0,0,0,0,0,0,0,1,"""ez"" bisa ejekan atau bercanda; tergantung konteks"
+6228334464,336.0,0.0,mider sgorel wait,2021,Lainnya,win,3063,neutral,0,0,0,0,0,0,0,0,
+5098433941,1161.0,2.0,report sogarde,2019,Lainnya,win,1159,negative,0,0,0,0,0,0,0,0,
+4539822498,-670.0,0.0,inyour DICK,2019,Lainnya,loss,2504,negative,0,0,0,0,0,0,0,0,
+3167872157,1572.0,132.0,TY FOR MID,2017,Lainnya,loss,1570,positive,0,0,0,0,0,0,0,0,
+7911497388,1038.0,2.0,its some wierd shit,2024,Lainnya,loss,3054,negative,1,0,1,0,0,0,0,0,
+4792075889,-142.0,128.0,DICKY CARRY LAGI,2019,Lainnya,loss,1805,positive,0,0,0,0,0,0,0,0,
+6020721562,138.0,132.0,good luck mio,2021,Lainnya,loss,2596,positive,0,0,0,0,0,0,0,0,
+2672819661,-73.0,131.0,we were just talking about how small ur dick is,2016,Lainnya,win,2421,negative,1,0,1,0,1,0,0,0,
+4512177254,765.0,131.0,ez kali pudge nya,2019,Lainnya,loss,2544,negative,1,0,0,0,1,0,0,0,
+7034099489,-88.0,129.0,glhf ivan ),2023,Major,win,3603,positive,0,0,0,0,0,0,0,0,
+4239873288,-86.0,3.0,go zaperoco,2018,Major,win,2406,neutral,0,0,0,0,0,0,0,0,
+4866313987,-743.0,1.0,berantem anjing,2019,Lainnya,loss,2485,negative,1,0,1,0,1,0,0,1,"""anjing"" ajakan berantem"
+4132990070,-91.0,0.0,dick request,2018,Lainnya,win,1078,negative,1,0,1,0,0,0,0,0,"""dick request"" - kemungkinan lelucon vulgar | cabul, konteks tidak jelas"
+2605815163,-66.0,130.0,wait aband,2016,Lainnya,win,2172,neutral,0,0,0,0,0,0,0,0,
+3686682034,-88.0,0.0,only to pause again,2018,Lainnya,loss,3092,negative,0,0,0,0,0,0,0,0,
+4877797756,99.0,130.0,LC Gay?,2019,Lainnya,loss,2937,negative,1,0,0,0,1,1,0,1,"""gay"" sebagai hinaan; konteks tidak pasti"
+3485691629,2170.0,132.0,tp gpp la,2017,Lainnya,loss,2267,neutral,0,0,0,0,0,0,0,0,
+5028760426,-908.0,,ada cuk coba liat di GC,2019,Lainnya,unknown,4468,neutral,0,0,0,0,0,0,0,1,'cuk' sapaan kasar tapi akrab (Jawa)
+2109541411,-362.0,131.0,francis = fan gay = gay,2016,Lainnya,win,3061,negative,1,0,0,0,1,1,0,1,"""fan gay = gay"" hinaan"
+2233452056,698.0,1.0,we can wait forever,2016,Lainnya,loss,3725,neutral,0,0,0,0,0,0,0,0,
+2160561003,-75.0,132.0,gl hf guys,2016,Lainnya,loss,1390,positive,0,0,0,0,0,0,0,0,
+5429542880,-82.0,128.0,Thanks for agreeing to the remake Virtus Pro,2020,Lainnya,win,2581,positive,0,0,0,0,0,0,0,0,
+2487094989,-10.0,130.0,60% here wont understand but we ty,2016,Lainnya,win,1403,positive,0,0,0,0,0,0,0,0,
+4786475481,-59.0,0.0,abba pasang sen3 di jungle kita report bareng2,2019,Lainnya,win,2638,negative,0,0,0,0,0,0,0,0,
+4315424665,2134.0,0.0,report plz ty,2019,Lainnya,win,2440,positive,0,0,0,0,0,0,0,0,
+5165442379,-678.0,130.0,"but, when i was top 1",2019,Lainnya,win,1538,neutral,0,0,0,0,0,0,0,0,
+5038052973,1326.0,132.0,g♥,2019,Lainnya,win,1781,positive,0,0,0,0,0,0,0,0,
+4303411618,2021.0,132.0,ada aja asu,2018,Lainnya,win,2528,negative,1,0,1,0,0,0,0,0,
+4588886744,3539.0,129.0,very ez,2019,Lainnya,loss,3559,negative,1,0,0,0,0,0,0,0,
+7378714390,-87.0,4.0,gl hf Kane god!,2023,Lainnya,win,2409,positive,0,0,0,0,0,0,0,0,
+4566270506,573.0,132.0,makanya jgn jomblo goblok,2019,Lainnya,win,2428,negative,1,0,0,0,1,0,0,0,
+7309298263,-73.0,3.0,gl hf chief,2023,Lainnya,win,2530,positive,0,0,0,0,0,0,0,0,
+3730929413,-45.0,2.0,glhf ,2018,Lainnya,loss,2461,positive,0,0,0,0,0,0,0,0,"""glhf"" + karakter PUA"

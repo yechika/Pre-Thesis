@@ -8,6 +8,12 @@ import numpy as np
 import pandas as pd
 
 KEY_COLS = ["match_id", "time", "player_slot"]
+JOIN_COLS = KEY_COLS + ["_seq"]
+
+
+def _key_seq(df: pd.DataFrame) -> np.ndarray:
+    """Occurrence index of each row within its (match_id, time, player_slot) key, NaN slots included."""
+    return df[KEY_COLS].fillna(-1).groupby(KEY_COLS, sort=False).cumcount().to_numpy()
 
 
 def merge_inference_with_processed(
@@ -28,8 +34,10 @@ def merge_inference_with_processed(
         raise FileNotFoundError(f"Tidak ada parquet di {processed_root}")
 
     proc = pd.concat([pd.read_parquet(p) for p in proc_files], ignore_index=True)
-    # Dedup processed: chat di detik sama oleh player sama bisa duplikat keys
-    proc = proc.drop_duplicates(subset=KEY_COLS, keep="first").reset_index(drop=True)
+    # (match_id, time, player_slot) is not unique: a player can send several messages in the same second.
+    # Inference files are row-aligned with processed files, so a per-key sequence number makes the join
+    # key unique and keeps every message (dropping duplicates used to discard 222,700 distinct messages).
+    proc["_seq"] = _key_seq(proc)
 
     sent_files = sorted(Path(sentiment_inference_root).glob("*.parquet"))
     tox_files = sorted(Path(toxicity_inference_root).glob("*.parquet"))
@@ -40,24 +48,25 @@ def merge_inference_with_processed(
         else None
     )
     if sent is not None:
-        sent = sent.drop_duplicates(subset=KEY_COLS, keep="first").reset_index(drop=True)
+        sent["_seq"] = _key_seq(sent)
     tox = (
         pd.concat([pd.read_parquet(p) for p in tox_files], ignore_index=True)
         if tox_files
         else None
     )
     if tox is not None:
-        tox = tox.drop_duplicates(subset=KEY_COLS, keep="first").reset_index(drop=True)
+        tox["_seq"] = _key_seq(tox)
 
     df = proc
     if sent is not None:
-        sent_keep = KEY_COLS + [c for c in sent.columns if c.startswith(("prob_", "predicted_"))]
-        df = df.merge(sent[sent_keep], on=KEY_COLS, how="left")
+        sent_keep = JOIN_COLS + [c for c in sent.columns if c.startswith(("prob_", "predicted_"))]
+        df = df.merge(sent[sent_keep], on=JOIN_COLS, how="left")
     if tox is not None:
-        tox_keep = KEY_COLS + [
+        tox_keep = JOIN_COLS + [
             c for c in tox.columns if c.startswith(("prob_", "pred_", "max_toxicity_", "any_"))
         ]
-        df = df.merge(tox[tox_keep], on=KEY_COLS, how="left", suffixes=("", "_tox"))
+        df = df.merge(tox[tox_keep], on=JOIN_COLS, how="left", suffixes=("", "_tox"))
+    df = df.drop(columns="_seq")
 
     # Kolom turunan untuk agregat:
     if "predicted_label" in df.columns:
